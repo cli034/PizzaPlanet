@@ -1,0 +1,31 @@
+body, html{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.bg {
+  /* Image used */
+  background: url("images/YOUTH.jpg");
+  /* Set a specific height */
+  min-height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box {
+  color: #fff;
+  padding: 18px;
+  font-size: 50px;
+  letter-spacing: 10px;
+  margin-top: 30%;
+
+  /* border: 1px solid white; */
+}
+
+.navbar-brand {
+  padding: 0px;
+}

@@ -28,6 +28,9 @@ body, html{
 
 .navbar-brand {
   padding: 0px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-left: -10px;
 }
 
 .dropdown-menu {

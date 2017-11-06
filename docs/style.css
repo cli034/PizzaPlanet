@@ -2,14 +2,18 @@ body, html{
   height: 100%;
   padding: 0;
   margin: 0;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 
   font-family: 'Roboto', "Helvetica Neue",  Arial;
 }
 
-.jumbotron-fluid {
-  /* Image used */
-  background: url("images/YOUTH.jpg");
+#underNav {
+  padding-top: 10px;
+}
+
+.bg {
+  background: url("images/toy_story_backdrop.jpg");
+
   /* Set a specific height */
   min-height: 100%;
 
@@ -20,14 +24,12 @@ body, html{
   background-size: cover;
 }
 
-.box {
-  color: #fff;
-  padding: 18px;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: 20%;
-
-  /*border: 1px solid white;*/
+.jumbotron {
+  height: 200px;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/pizza-planet.jpg");
 }
 
 .navbar-brand {
@@ -39,4 +41,9 @@ body, html{
 
 .dropdown-menu {
   box-shadow: 2px 2px 3px #888888;
+}
+
+.card {
+   margin-bottom: 10px;
+   color: black;
 }

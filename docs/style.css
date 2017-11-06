@@ -25,7 +25,7 @@ body, html{
 }
 
 .jumbotron {
-  height: 200px;
+  height: 300px;
   width: 65%;
   margin-left: auto;
   margin-right: auto;
@@ -44,6 +44,10 @@ body, html{
 }
 
 .card {
-   margin-bottom: 10px;
+   margin-bottom: 30px;
    color: black;
+}
+
+.col-lg-6 {
+  padding-left: 40px;
 }

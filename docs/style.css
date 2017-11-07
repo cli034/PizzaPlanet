@@ -26,7 +26,7 @@ body, html{
 
 .jumbotron {
   height: 300px;
-  width: 65%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   background-image: url("images/pizza-planet.jpg");
@@ -44,12 +44,16 @@ body, html{
 }
 
 .card {
-   margin-bottom: 30px;
-   color: black;
+  width: 60%;
+  height: 30rem;
+  color: black;
 
-   border: 1px solid black;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  border: 1px solid black;
 }
 
-.col-lg-6 {
-  padding-left: 40px;
+#menuContainer {
 }

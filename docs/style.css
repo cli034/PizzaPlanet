@@ -46,6 +46,8 @@ body, html{
 .card {
    margin-bottom: 30px;
    color: black;
+
+   border: 1px solid black;
 }
 
 .col-lg-6 {

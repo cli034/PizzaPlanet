@@ -24,14 +24,6 @@ body, html{
   background-size: cover;
 }
 
-.jumbotron {
-  height: 300px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url("images/pizza-planet.jpg");
-}
-
 .navbar-brand {
   padding: 0px;
   margin-top: -10px;
@@ -39,21 +31,43 @@ body, html{
   margin-left: -10px;
 }
 
-.dropdown-menu {
-  box-shadow: 2px 2px 3px #888888;
+.jumbotron {
+  height: 300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/pizza-planet.jpg");
 }
 
 .card {
-  width: 60%;
-  height: 30rem;
   color: black;
-
-  float: none;
-  margin: 0 auto;
-  margin-bottom: 30px;
-
+  margin-bottom: 10px;
   border: 1px solid black;
 }
 
-#menuContainer {
+/* For bigger screens */
+@media screen and (min-width:768px) {
+  .card {
+    width: 60%;
+    height: 30rem;
+    color: black;
+
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+    border: 1px solid black;
+  }
+
+  .jumbotron {
+    height: 300px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("images/pizza-planet.jpg");
+  }
+
+  .dropdown-menu {
+    box-shadow: 2px 2px 3px #888888;
+  }
 }

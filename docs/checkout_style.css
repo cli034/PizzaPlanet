@@ -32,6 +32,14 @@ body, html{
     background-image: url("images/pizza-planet.jpg");
   }
 
+  #customPizzaJumbotron {
+    height: 300px;
+    width: 73%;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url("images/customPizza.jpg");
+  }
+
   .navbar-brand {
     padding: 0px;
     margin-top: -10px;

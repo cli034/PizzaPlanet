@@ -17,7 +17,7 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.html">
       <!-- definitely find a beteter logo lol -->
       <img class="navbar-brand" src="images/pizza_planet_logo.jpg" width="50px" height="50px" alt="Pizza Planet Logo">
     </a>
@@ -88,39 +88,65 @@
 
   <!-- everything under the navbar -->
   <div class="container-fluid bg" id="underNav">
-      <div class="jumbotron text-center">
-        <h1>You're almost getting your pizza</h1>
-        <p>Review your Order</p> 
-      </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
               <div class="card">
-                <h4 class="card-title" style="color:black">Pick and Place Your Order</h4>
-                <p class="card-text" style="color:black">Pizza
-                    <br \>
-                    
-                    <br \>
-                    Order details
-                    <br \>
-                </p>
-                <a href="#" class="btn btn-primary">Go Back</a>
+                <div class="card-header">
+                  <h3 class="card-title" style="color:black">Pick and Place Your Order</h3>
+                </div>
+                <div class="card-body">
+                  <h4>Pizzas</h4>
+                  <div class="container">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Supreme Pizza" id="supremePizzaCheck">
+                        Supreme Pizza
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Pepperoni Pizza"id="pepperoniPizzaCheck">
+                        Pepperoni Pizza
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer"></div>
+                <div class="card-body">
+                  <h4>Wings</h4>
+                  <div class="container" id="pizzaContainer">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Buffalo Wings" id="buffaloWingCheck">
+                        Buffalo
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Lemon Pepper Wings" id="lemonWingCheck">
+                        Lemon Pepper
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-lg-3"> 
-              <div class="card">
-                <h4 class="card-tile" style="color:black">Order Summary</h4>
-                <p class="card-text" style="color:black"> some random text faeeiaoge awgieojgaiowejgioweajgie
-                    gjaelgjelage.
-                    <br />
-                    <br />
-                    Total
-                </p>
-                <a href="#" class="btn btn-primary">Place Your Order</a>
+            <div class="col-lg-3">
+              <div class="card" id="summaryBox">
+                <div class="card-header">
+                  <h4 class="card-tile" style="color:black">Order Summary</h4>
+                </div>
+                <div class="card-body">
+                  <span class="card-text" style="color:black" id="orderSum"></span>
+                </div>
+                <div class="card-footer" id="total">
+                  <span>Total: </span>
+                  <span id="totalCost"></span>
+                  <a href="#" class="btn btn-primary">Place Your Order</a>
+                </div>
               </div>
             </div>
         </div>
-    </div>      
+    </div>
   </div>
 
   <!-- Scripts -->

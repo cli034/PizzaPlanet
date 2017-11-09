@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // this will be on database when we figure it out
   var prices = {
     "Supreme Pizza":10,
     "Pepperoni Pizza":9,

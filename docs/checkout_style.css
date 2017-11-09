@@ -55,3 +55,7 @@ body, html{
   #total{
     font-size: 28px;
   }
+
+  #summaryBox{
+    height: 100%;
+  }

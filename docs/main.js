@@ -18,6 +18,12 @@ $(document).ready(function() {
       if(index > -1)
         orderSummary.splice(index, 2);
     }
+    if(!document.getElementById("lemonWingCheck").checked){
+      var index = orderSummary.indexOf("Lemon Pepper Wings");
+      if(index > -1)
+        orderSummary.splice(index, 2);
+    }
+
     $("#orderSum").html(orderSummary);
   }
 
@@ -41,6 +47,13 @@ $(document).ready(function() {
     if(document.getElementById("buffaloWingCheck").checked){
       if(!orderSummary.includes("Buffalo Wings")){
         orderSummary.push("Buffalo Wings");
+        orderSummary.push("<br \>");
+        console.log(orderSummary);
+      }
+    }
+    if(document.getElementById("lemonWingCheck").checked){
+      if(!orderSummary.includes("Lemon Pepper Wings")){
+        orderSummary.push("Lemon Pepper Wings");
         orderSummary.push("<br \>");
         console.log(orderSummary);
       }

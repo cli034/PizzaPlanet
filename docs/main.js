@@ -1,5 +1,22 @@
 $(document).ready(function() {
+  var prices = {
+    "Supreme Pizza":10,
+    "Pepperoni Pizza":9,
+    "Buffalo Wings":8,
+    "Lemon Pepper Wings":8,
+  };
+
   var orderSummary = [];
+
+  function calcTotalSum(){
+    var total = 0;
+    for(var i = 0; i < orderSummary.length; i++){
+      if((i % 2) == 0)
+        total += prices[orderSummary[i]];
+    }
+    $("#totalCost").html("$" + total.toString());
+    console.log(total);
+  }
 
   // THERE IS PROBABLY A BETTER WAY OF DOING THIS
   function changeOrderSum(){
@@ -25,6 +42,7 @@ $(document).ready(function() {
     }
 
     $("#orderSum").html(orderSummary);
+    calcTotalSum();
   }
 
   // DEFINITELY A BETTER WAY OF DOING THIS

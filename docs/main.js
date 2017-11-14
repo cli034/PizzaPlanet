@@ -36,6 +36,7 @@ $(document).ready(function() {
     "Brisk":3,
     "Lemonade":3,
   };
+
   // adjust value for size
   var sizePrice = {
     "Large":5,
@@ -49,9 +50,9 @@ $(document).ready(function() {
 
   function calcTotalSum(){
     var total = 0;
-    for(var i = 0; i < orderSummary.length; i++){
+    for(var i = 0; i < orderPrices.length; i++){
       if((i % 2) == 0)
-        total += prices[orderSummary[i]];
+        total += Number(orderPrices[i].replace("$", "")); //get rid of $
     }
     $("#totalCost").html("$" + total.toString());
     //console.log(total);
@@ -203,164 +204,173 @@ $(document).ready(function() {
 
   // DEFINITELY A BETTER WAY OF DOING THIS
   // check if pressed
-  $( "input" ).on( "click", function() {
-    if(document.getElementById("supremePizzaCheck").checked){
-      // if no supreme pizza, then add it
-      $("#pizzaRadio1").removeAttr('hidden');
-      if(!orderSummary.includes("Supreme Pizza")){
-        orderSummary.push("Supreme Pizza");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Supreme Pizza"].toString());
-        orderPrices.push("<br \>");
+  function checkMark(){
+    $( "input" ).on( "click", function() {
+      if(document.getElementById("supremePizzaCheck").checked){
+        // if no supreme pizza, then add it
+        $("#pizzaRadio1").removeAttr('hidden');
+        if(!orderSummary.includes("Supreme Pizza")){
+          orderSummary.push("Supreme Pizza");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Supreme Pizza"].toString());
+          orderPrices.push("<br \>");
+        } else{
+          orderPrices[orderSummary.indexOf("Supreme Pizza")] = "$" + (prices["Supreme Pizza"] + Number($('input[name=pizzaRadioOptions1]:checked', '#pizzaRadio1').val())).toString();
+        }
       }
-    }
-    if(document.getElementById("pepperoniPizzaCheck").checked){
-      $("#pizzaRadio2").removeAttr('hidden');
-      if(!orderSummary.includes("Pepperoni Pizza")){
-        orderSummary.push("Pepperoni Pizza");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Pepperoni Pizza"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("pepperoniPizzaCheck").checked){
+        $("#pizzaRadio2").removeAttr('hidden');
+        if(!orderSummary.includes("Pepperoni Pizza")){
+          orderSummary.push("Pepperoni Pizza");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Pepperoni Pizza"].toString());
+          orderPrices.push("<br \>");
+        } else{
+          orderPrices[orderSummary.indexOf("Pepperoni Pizza")] = "$" + (prices["Pepperoni Pizza"] + Number($('input[name=pizzaRadioOptions2]:checked', '#pizzaRadio2').val())).toString();
+        }
       }
-    }
-    if(document.getElementById("cheesePizzaCheck").checked){
-      $("#pizzaRadio3").removeAttr('hidden');
-      if(!orderSummary.includes("Cheese Pizza")){
-        orderSummary.push("Cheese Pizza");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Cheese Pizza"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("cheesePizzaCheck").checked){
+        $("#pizzaRadio3").removeAttr('hidden');
+        if(!orderSummary.includes("Cheese Pizza")){
+          orderSummary.push("Cheese Pizza");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Cheese Pizza"].toString());
+          orderPrices.push("<br \>");
+        }  else{
+          orderPrices[orderSummary.indexOf("Cheese Pizza")] = "$" + (prices["Cheese Pizza"] + Number($('input[name=pizzaRadioOptions3]:checked', '#pizzaRadio3').val())).toString();
+        }
       }
-    }
-    // probably gonna need to implement custom pizza differently
-    if(document.getElementById("customPizzaCheck").checked){
-      if(!orderSummary.includes("Custom Pizza")){
-        orderSummary.push("Custom Pizza");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Custom Pizza"].toString());
-        orderPrices.push("<br \>");
+      // probably gonna need to implement custom pizza differently
+      if(document.getElementById("customPizzaCheck").checked){
+        if(!orderSummary.includes("Custom Pizza")){
+          orderSummary.push("Custom Pizza");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Custom Pizza"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("buffaloWingCheck").checked){
-      $("#wingsRadio1").removeAttr('hidden');
-      if(!orderSummary.includes("Buffalo Wings")){
-        orderSummary.push("Buffalo Wings");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Buffalo Wings"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("buffaloWingCheck").checked){
+        $("#wingsRadio1").removeAttr('hidden');
+        if(!orderSummary.includes("Buffalo Wings")){
+          orderSummary.push("Buffalo Wings");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + (prices["Buffalo Wings"] + Number($('input[name=wingsRadioOptions1]:checked', '#wingsRadio1').val())).toString());
+          orderPrices.push("<br \>");
+        } else{
+          orderPrices[orderSummary.indexOf("Buffalo Wings")] = "$" + (prices["Buffalo Wings"] + Number($('input[name=wingsRadioOptions1]:checked', '#wingsRadio1').val())).toString();
+        }
       }
-    }
-    if(document.getElementById("lemonWingCheck").checked){
-      $("#wingsRadio2").removeAttr('hidden');
-      if(!orderSummary.includes("Lemon Pepper Wings")){
-        orderSummary.push("Lemon Pepper Wings");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Lemon Pepper Wings"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("lemonWingCheck").checked){
+        $("#wingsRadio2").removeAttr('hidden');
+        if(!orderSummary.includes("Lemon Pepper Wings")){
+          orderSummary.push("Lemon Pepper Wings");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + (prices["Lemon Pepper Wings"] + Number($('input[name=wingsRadioOptions2]:checked', '#wingsRadio2').val())).toString());
+          orderPrices.push("<br \>");
+        } else{
+          orderPrices[orderSummary.indexOf("Lemon Pepper Wings")] = "$" + (prices["Lemon Pepper Wings"] + Number($('input[name=wingsRadioOptions2]:checked', '#wingsRadio2').val())).toString();
+        }
       }
-    }
-    if(document.getElementById("hotWingCheck").checked){
-      $("#wingsRadio3").removeAttr('hidden');
-      if(!orderSummary.includes("Hot Wings")){
-        orderSummary.push("Hot Wings");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Hot Wings"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("hotWingCheck").checked){
+        $("#wingsRadio3").removeAttr('hidden');
+        if(!orderSummary.includes("Hot Wings")){
+          orderSummary.push("Hot Wings");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + (prices["Hot Wings"] + Number($('input[name=wingsRadioOptions3]:checked', '#wingsRadio3').val())).toString());
+          orderPrices.push("<br \>");
+        } else{
+          orderPrices[orderSummary.indexOf("Hot Wings")] = "$" + (prices["Hot Wings"] + Number($('input[name=wingsRadioOptions3]:checked', '#wingsRadio3').val())).toString();
+        }
       }
-    }
-    if(document.getElementById("hotWingCheck").checked){
-      if(!orderSummary.includes("Hot Wings")){
-        orderSummary.push("Hot Wings");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Hot Wings"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("breadStickCheck").checked){
+        if(!orderSummary.includes("Breadsticks")){
+          orderSummary.push("Breadsticks");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Breadsticks"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("breadStickCheck").checked){
-      if(!orderSummary.includes("Breadsticks")){
-        orderSummary.push("Breadsticks");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Breadsticks"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("friesCheck").checked){
+        if(!orderSummary.includes("Fries")){
+          orderSummary.push("Fries");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Fries"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("friesCheck").checked){
-      if(!orderSummary.includes("Fries")){
-        orderSummary.push("Fries");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Fries"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("cheeseSticksCheck").checked){
+        if(!orderSummary.includes("Cheese Sticks")){
+          orderSummary.push("Cheese Sticks");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Cheese Sticks"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("cheeseSticksCheck").checked){
-      if(!orderSummary.includes("Cheese Sticks")){
-        orderSummary.push("Cheese Sticks");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Cheese Sticks"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("saladCheck").checked){
+        if(!orderSummary.includes("Salad")){
+          orderSummary.push("Salad");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Salad"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("saladCheck").checked){
-      if(!orderSummary.includes("Salad")){
-        orderSummary.push("Salad");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Salad"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("mashedPotatoCheck").checked){
+        if(!orderSummary.includes("Mashed Potatoes")){
+          orderSummary.push("Mashed Potatoes");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Mashed Potatoes"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("mashedPotatoCheck").checked){
-      if(!orderSummary.includes("Mashed Potatoes")){
-        orderSummary.push("Mashed Potatoes");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Mashed Potatoes"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("cokeCheck").checked){
+        if(!orderSummary.includes("Coca-Cola")){
+          orderSummary.push("Coca-Cola");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Coca-Cola"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("cokeCheck").checked){
-      if(!orderSummary.includes("Coca-Cola")){
-        orderSummary.push("Coca-Cola");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Coca-Cola"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("mountainDewCheck").checked){
+        if(!orderSummary.includes("Mountain Dew")){
+          orderSummary.push("Mountain Dew");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Mountain Dew"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("mountainDewCheck").checked){
-      if(!orderSummary.includes("Mountain Dew")){
-        orderSummary.push("Mountain Dew");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Mountain Dew"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("crushCheck").checked){
+        if(!orderSummary.includes("Crush")){
+          orderSummary.push("Crush");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Crush"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("crushCheck").checked){
-      if(!orderSummary.includes("Crush")){
-        orderSummary.push("Crush");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Crush"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("briskCheck").checked){
+        if(!orderSummary.includes("Brisk")){
+          orderSummary.push("Brisk");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Brisk"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("briskCheck").checked){
-      if(!orderSummary.includes("Brisk")){
-        orderSummary.push("Brisk");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Brisk"].toString());
-        orderPrices.push("<br \>");
+      if(document.getElementById("lemonadeCheck").checked){
+        if(!orderSummary.includes("Lemonade")){
+          orderSummary.push("Lemonade");
+          orderSummary.push("<br \>");
+          orderPrices.push("$" + prices["Lemonade"].toString());
+          orderPrices.push("<br \>");
+        }
       }
-    }
-    if(document.getElementById("lemonadeCheck").checked){
-      if(!orderSummary.includes("Lemonade")){
-        orderSummary.push("Lemonade");
-        orderSummary.push("<br \>");
-        orderPrices.push("$" + prices["Lemonade"].toString());
-        orderPrices.push("<br \>");
-      }
-    }
 
-    changeOrderSum();
-    //$("#orderSum").html($("input:checked").val() + " is checked.");
+      changeOrderSum();
+    });
+  }
+  $('#wingsContainer input').on('change', function() {
+    checkMark();
   });
 
+  checkMark();
   changeOrderSum();
   //---------------------------END----------------------------------------------
 });

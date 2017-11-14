@@ -1,0 +1,90 @@
+body, html{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  /* overflow-y: hidden; */
+
+  font-family: 'Roboto', "Helvetica Neue",  Arial;
+}
+
+#underNav {
+  padding-top: 10px;
+}
+
+.bg {
+  background: url("images/toy_story_backdrop.jpg");
+
+  /* Set a specific height */
+  min-height: 100%;
+
+  color: white;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron {
+  height: 300px;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/pizza-planet.jpg");
+}
+
+#customPizzaJumbotron {
+  height: 300px;
+  width: 73%;
+  margin-left:auto;
+  margin-right:auto;
+  background-image: url("images/customPizza.jpg");
+}
+
+.navbar {
+  height: 60px;
+}
+
+.navbar-brand {
+  padding: 0px;
+  height: 50px;
+  width: 50px;
+  margin-left: -10px;
+}
+
+.dropdown-menu {
+  box-shadow: 2px 2px 3px #888888;
+}
+
+.card {
+   margin-bottom: 30px;
+   color: black;
+}
+
+.col-lg-6 {
+  padding-left: 40px;
+}
+
+#total{
+  font-size: 28px;
+}
+
+#summaryBox{
+  height: 100%;
+}
+
+.black{
+  background-color: black;
+  color: white;
+}
+
+.blue{
+  background-color: blue;
+}
+
+#orderSumItems {
+  /* makes text all in one line */
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

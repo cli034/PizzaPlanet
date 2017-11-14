@@ -1,4 +1,19 @@
 $(document).ready(function() {
+  //---------------------------------------------------------------------------
+  // javascript for modals
+  // might be able to do this using just bootstrap html
+  // hide first modal
+  $("#registerButton").on("click", function() {
+    $('#loginModal').modal('hide');
+  });
+  // trigger next modal
+  $("#registerButton").on("click", function() {
+    $('#registerModal').modal('show');
+  });
+  //----------------------------------------------------------------------------
+
+  // --------------------------------------------------------------------------
+  // Javascript for checkout page
   // this will be on database when we figure it out
   var prices = {
     "Supreme Pizza":10,
@@ -94,5 +109,7 @@ $(document).ready(function() {
     changeOrderSum();
     //$("#orderSum").html($("input:checked").val() + " is checked.");
   });
+
   changeOrderSum();
+  //---------------------------------------------------------------------------
 });

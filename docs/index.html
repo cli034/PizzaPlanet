@@ -50,12 +50,13 @@
     </div>
   </nav>
 
+  <!-- TODO: modal backend -->
   <!-- Popup to sign in -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
     <div class="modal-dialog" role="form">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sign In To Your Account</h5>
+          <h5 class="modal-title" id="loginModalLabel">Sign In To Your Account</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,32 +81,40 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-target="#regModal">Register</button>
+          <button type="button" class="btn btn-secondary" id="registerButton">Register</button>
           <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Popup to register TODO: finish lol -->
-  <div class="modal fade" id="regModal" aria-labelledby="register" aria-hidden="true">
+  <!-- Popup to register -->
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
     <div class="modal-dialog" role="form">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Register a New Account</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="inputEmail">Email Address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Register a New Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="form-group">
-          <label for="confirmEmail">Confirm Email Address</label>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inputEmail">Email Address</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Enter Email" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Enter Password</label>
+            <input type="email" class="form-control" id="registerPassword" placeholder="Enter Password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="email" class="form-control" id="registerConfirmPW" placeholder="Confirm Password" required>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Register</button>
+        </div>
       </div>
     </div>
   </div>

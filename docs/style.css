@@ -50,6 +50,18 @@ body, html{
   border: 1px solid black;
 }
 
+#itemCard {
+  width: 60%;
+  height: 32rem;
+  color: black;
+
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  border: 1px solid black;
+}
+
 /* For bigger screens */
 @media screen and (min-width:1000px) {
   .navbar-brand {

@@ -93,6 +93,7 @@ $(document).ready(function() {
       }
     }
     if(!document.getElementById("buffaloWingCheck").checked){
+      $("#wingsRadio1").attr('hidden', 'true');
       var index = orderSummary.indexOf("Buffalo Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -100,6 +101,7 @@ $(document).ready(function() {
       }
     }
     if(!document.getElementById("lemonWingCheck").checked){
+      $("#wingsRadio2").attr('hidden', 'true');
       var index = orderSummary.indexOf("Lemon Pepper Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -107,6 +109,7 @@ $(document).ready(function() {
       }
     }
     if(!document.getElementById("hotWingCheck").checked){
+      $("#wingsRadio3").attr('hidden', 'true');
       var index = orderSummary.indexOf("Hot Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -239,6 +242,7 @@ $(document).ready(function() {
       }
     }
     if(document.getElementById("buffaloWingCheck").checked){
+      $("#wingsRadio1").removeAttr('hidden');
       if(!orderSummary.includes("Buffalo Wings")){
         orderSummary.push("Buffalo Wings");
         orderSummary.push("<br \>");
@@ -247,6 +251,7 @@ $(document).ready(function() {
       }
     }
     if(document.getElementById("lemonWingCheck").checked){
+      $("#wingsRadio2").removeAttr('hidden');
       if(!orderSummary.includes("Lemon Pepper Wings")){
         orderSummary.push("Lemon Pepper Wings");
         orderSummary.push("<br \>");
@@ -255,6 +260,7 @@ $(document).ready(function() {
       }
     }
     if(document.getElementById("hotWingCheck").checked){
+      $("#wingsRadio3").removeAttr('hidden');
       if(!orderSummary.includes("Hot Wings")){
         orderSummary.push("Hot Wings");
         orderSummary.push("<br \>");

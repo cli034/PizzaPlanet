@@ -100,8 +100,17 @@ $(document).ready(function() {
       }
     }
 
-    $("#orderSumItems").html(orderSummary);
+
+    // display items
+    console.log(orderSummary);
+    if(orderSummary.length == 0)
+      $("#orderSumItems").html("Select Items To Begin");
+    else
+      $("#orderSumItems").html(orderSummary);
+
+    // display prices
     $("#orderSumPrice").html(orderPrices);
+
     calcTotalSum();
   }
 

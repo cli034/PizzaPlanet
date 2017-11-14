@@ -69,6 +69,8 @@ body, html{
 }
 
 #summaryBox{
+  width: 15%;
+  position: fixed;
 }
 
 #placeOrderBox{

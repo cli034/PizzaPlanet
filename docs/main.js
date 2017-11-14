@@ -1,6 +1,7 @@
 $(document).ready(function() {
   //---------------------------------------------------------------------------
   // javascript for modals
+  //---------------------------------------------------------------------------
   // might be able to do this using just bootstrap html
   // hide first modal
   $("#registerButton").on("click", function() {
@@ -10,10 +11,11 @@ $(document).ready(function() {
   $("#registerButton").on("click", function() {
     $('#registerModal').modal('show');
   });
-  //----------------------------------------------------------------------------
+  //---------------------------END----------------------------------------------
 
   // --------------------------------------------------------------------------
   // Javascript for checkout page
+  //---------------------------------------------------------------------------
   // this will be on database when we figure it out
   var prices = {
     "Supreme Pizza":10,
@@ -23,15 +25,23 @@ $(document).ready(function() {
     "Buffalo Wings":8,
     "Lemon Pepper Wings":8,
     "Hot Wings":8,
+    "Breadsticks":6,
+    "Fries":5,
+    "Cheese Sticks":6,
+    "Salad":5,
+    "Mashed Potatoes":5,
+    "Coca-Cola":3,
+    "Mountain Dew":3,
+    "Crush":3,
+    "Brisk":3,
+    "Lemonade":3,
   };
-
   // adjust value for size
   var sizePrice = {
     "Large":5,
     "Medium":3,
     "Small":0,
   };
-
   // probably need object for custom pizza
 
   var orderSummary = [];
@@ -44,12 +54,14 @@ $(document).ready(function() {
         total += prices[orderSummary[i]];
     }
     $("#totalCost").html("$" + total.toString());
-    console.log(total);
+    //console.log(total);
   }
 
   // THERE IS PROBABLY A BETTER WAY OF DOING THIS
+  // update summary box
   function changeOrderSum(){
     if(!(document.getElementById("supremePizzaCheck").checked)){
+      $("#pizzaRadio1").attr('hidden', 'true');
       var index = orderSummary.indexOf("Supreme Pizza");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -57,6 +69,7 @@ $(document).ready(function() {
       }
     }
     if(!(document.getElementById("pepperoniPizzaCheck").checked)){
+      $("#pizzaRadio2").attr('hidden', 'true');
       var index = orderSummary.indexOf("Pepperoni Pizza");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -64,6 +77,7 @@ $(document).ready(function() {
       }
     }
     if(!(document.getElementById("cheesePizzaCheck").checked)){
+      $("#pizzaRadio3").attr('hidden', 'true');
       var index = orderSummary.indexOf("Cheese Pizza");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -99,10 +113,80 @@ $(document).ready(function() {
         orderPrices.splice(index, 2);
       }
     }
+    if(!document.getElementById("breadStickCheck").checked){
+      var index = orderSummary.indexOf("Breadsticks");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("friesCheck").checked){
+      var index = orderSummary.indexOf("Fries");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("cheeseSticksCheck").checked){
+      var index = orderSummary.indexOf("Cheese Sticks");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("saladCheck").checked){
+      var index = orderSummary.indexOf("Salad");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("mashedPotatoCheck").checked){
+      var index = orderSummary.indexOf("Mashed Potatoes");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("cokeCheck").checked){
+      var index = orderSummary.indexOf("Coca-Cola");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("mountainDewCheck").checked){
+      var index = orderSummary.indexOf("Mountain Dew");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("crushCheck").checked){
+      var index = orderSummary.indexOf("Crush");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("briskCheck").checked){
+      var index = orderSummary.indexOf("Brisk");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
+    if(!document.getElementById("lemonadeCheck").checked){
+      var index = orderSummary.indexOf("Lemonade");
+      if(index > -1){
+        orderSummary.splice(index, 2);
+        orderPrices.splice(index, 2);
+      }
+    }
 
 
     // display items
-    console.log(orderSummary);
+    //console.log(orderSummary);
     if(orderSummary.length == 0)
       $("#orderSumItems").html("Select Items To Begin");
     else
@@ -115,9 +199,11 @@ $(document).ready(function() {
   }
 
   // DEFINITELY A BETTER WAY OF DOING THIS
+  // check if pressed
   $( "input" ).on( "click", function() {
     if(document.getElementById("supremePizzaCheck").checked){
       // if no supreme pizza, then add it
+      $("#pizzaRadio1").removeAttr('hidden');
       if(!orderSummary.includes("Supreme Pizza")){
         orderSummary.push("Supreme Pizza");
         orderSummary.push("<br \>");
@@ -126,6 +212,7 @@ $(document).ready(function() {
       }
     }
     if(document.getElementById("pepperoniPizzaCheck").checked){
+      $("#pizzaRadio2").removeAttr('hidden');
       if(!orderSummary.includes("Pepperoni Pizza")){
         orderSummary.push("Pepperoni Pizza");
         orderSummary.push("<br \>");
@@ -134,6 +221,7 @@ $(document).ready(function() {
       }
     }
     if(document.getElementById("cheesePizzaCheck").checked){
+      $("#pizzaRadio3").removeAttr('hidden');
       if(!orderSummary.includes("Cheese Pizza")){
         orderSummary.push("Cheese Pizza");
         orderSummary.push("<br \>");
@@ -174,11 +262,99 @@ $(document).ready(function() {
         orderPrices.push("<br \>");
       }
     }
+    if(document.getElementById("hotWingCheck").checked){
+      if(!orderSummary.includes("Hot Wings")){
+        orderSummary.push("Hot Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Hot Wings"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("breadStickCheck").checked){
+      if(!orderSummary.includes("Breadsticks")){
+        orderSummary.push("Breadsticks");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Breadsticks"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("friesCheck").checked){
+      if(!orderSummary.includes("Fries")){
+        orderSummary.push("Fries");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Fries"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("cheeseSticksCheck").checked){
+      if(!orderSummary.includes("Cheese Sticks")){
+        orderSummary.push("Cheese Sticks");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Cheese Sticks"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("saladCheck").checked){
+      if(!orderSummary.includes("Salad")){
+        orderSummary.push("Salad");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Salad"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("mashedPotatoCheck").checked){
+      if(!orderSummary.includes("Mashed Potatoes")){
+        orderSummary.push("Mashed Potatoes");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Mashed Potatoes"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("cokeCheck").checked){
+      if(!orderSummary.includes("Coca-Cola")){
+        orderSummary.push("Coca-Cola");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Coca-Cola"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("mountainDewCheck").checked){
+      if(!orderSummary.includes("Mountain Dew")){
+        orderSummary.push("Mountain Dew");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Mountain Dew"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("crushCheck").checked){
+      if(!orderSummary.includes("Crush")){
+        orderSummary.push("Crush");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Crush"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("briskCheck").checked){
+      if(!orderSummary.includes("Brisk")){
+        orderSummary.push("Brisk");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Brisk"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
+    if(document.getElementById("lemonadeCheck").checked){
+      if(!orderSummary.includes("Lemonade")){
+        orderSummary.push("Lemonade");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + prices["Lemonade"].toString());
+        orderPrices.push("<br \>");
+      }
+    }
 
     changeOrderSum();
     //$("#orderSum").html($("input:checked").val() + " is checked.");
   });
 
   changeOrderSum();
-  //---------------------------------------------------------------------------
+  //---------------------------END----------------------------------------------
 });

@@ -2,13 +2,14 @@ body, html{
   height: 100%;
   padding: 0;
   margin: 0;
-  /* overflow-y: hidden; */
+  background-color: grey;
 
   font-family: 'Roboto', "Helvetica Neue",  Arial;
 }
 
 #underNav {
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .bg {
@@ -20,7 +21,6 @@ body, html{
   color: white;
 
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -70,7 +70,7 @@ body, html{
 
 #summaryBox{
   width: 15%;
-  position: fixed;
+  position: fixed;  /* follows you as you scroll */
 }
 
 #placeOrderBox{
@@ -90,6 +90,10 @@ body, html{
   /* makes text all in one line */
   clear: both;
   display: inline-block;
-  overflow: hidden;
+  overflow: scroll;
   white-space: nowrap;
+}
+
+.hidden {
+  visibility: hidden;
 }

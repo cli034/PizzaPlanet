@@ -7,7 +7,7 @@
   <meta name="robots" content="nofollow">
 
   <meta charset="utf-8">
-  <title>Pizza Planet</title>
+  <title>Checkout - Pizza Planet</title>
   <meta name="description" content="Pizza Planet Website. Definitely a parody website. Don't sue us Pixar.">
 
   <!-- CSS -->
@@ -21,7 +21,7 @@
 
   <!-- Nav Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.html">
       <!-- definitely find a beteter logo lol -->
       <img class="navbar-brand" src="images/pizza_planet_logo.jpg" width="50px" height="50px" alt="Pizza Planet Logo">
     </a>
@@ -140,38 +140,74 @@
                         Supreme Pizza
                       </label>
                       <br \>
+                      <div id="pizzaRadio1" hidden>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions1" id="smRadio" value="Small" checked> Small (10")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions1" id="medRadio" value="Medium"> Medium (12")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions1" id="lrgRadio" value="Large"> Large (14")
+                          </label>
+                        </div>
+                      </div>
+
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="Pepperoni Pizza"id="pepperoniPizzaCheck">
                         Pepperoni Pizza
                       </label>
                       <br \>
+                      <div id="pizzaRadio2" hidden>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions2" id="smRadio" value="Small" checked> Small (10")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions2" id="medRadio" value="Medium"> Medium (12")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions2" id="lrgRadio" value="Large"> Large (14")
+                          </label>
+                        </div>
+                      </div>
+
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="Cheese Pizza" id="cheesePizzaCheck">
                         Cheese Pizza
                       </label>
                       <br \>
+                      <div id="pizzaRadio3" hidden>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions3" id="smRadio" value="Small" checked> Small (10")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions3" id="medRadio" value="Medium"> Medium (12")
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="pizzaRadioOptions3" id="lrgRadio" value="Large"> Large (14")
+                          </label>
+                        </div>
+                      </div>
+
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="Custom Pizza" id="customPizzaCheck">
                         Custom Pizza
                       </label>
-                      <br \>
-
-                      <!-- Could change value to numbers instead; not sure yet -->
-                      <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="radio" name="pizzaRadioOptions" id="smRadio" value="Small" checked> Small (10")
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="radio" name="pizzaRadioOptions" id="medRadio" value="Medium"> Medium (12")
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="radio" name="pizzaRadioOptions" id="lrgRadio" value="Large"> Large (14")
-                        </label>
-                      </div>
 
                     </div>
                   </div>
@@ -222,6 +258,30 @@
                   <h4>Sides</h4>
                   <div class="container" id="sideContainer">
                     <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Breadsticks" id="breadStickCheck">
+                          Breadsticks
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Fries" id="friesCheck">
+                          Fries
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Cheese Sticks" id="cheeseSticksCheck">
+                          Cheese Sticks
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Salad" id="saladCheck">
+                          Salad
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Mashed Potato" id="mashedPotatoCheck">
+                          Mashed Potatoes
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -230,6 +290,30 @@
                   <h4>Drinks</h4>
                   <div class="container" id="drinkContainer">
                     <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Coca-Cola" id="cokeCheck">
+                          Coca-Cola
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Mountain Dew" id="mountainDewCheck">
+                          Mountain Dew
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Crush" id="crushCheck">
+                          Crush
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Brisk" id="briskCheck">
+                          Brisk
+                      </label>
+                      <br \>
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="Lemonade" id="lemonadeCheck">
+                          Lemonade
+                      </label>
                     </div>
                   </div>
                 </div>

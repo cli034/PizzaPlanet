@@ -90,7 +90,7 @@ body, html{
   /* makes text all in one line */
   clear: both;
   display: inline-block;
-  overflow: scroll;
+  overflow: hidden;
   white-space: nowrap;
 }
 

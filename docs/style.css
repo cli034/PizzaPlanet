@@ -52,7 +52,7 @@ background-size: cover;
 
 #itemCard {
   width: 60%;
-  height: 32rem;
+  height: auto;
   color: black;
 
   float: none;
@@ -64,7 +64,7 @@ background-size: cover;
 
 #itemCard2 {
   width: 60%;
-  height: 34rem;
+  height: auto;
   color: black;
 
   float: none;

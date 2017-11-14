@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="googlebot" content="noarchive">
+  <meta name="googlebot" content="noindex">
+  <meta name="robots" content="noindex">
+  <meta name="robots" content="nofollow">
+
+  <meta charset="utf-8">
+  <title>Pizza - Pizza Planet</title>
+  <meta name="description" content="Pizza Planet Website. Definitely a parody website. Don't sue us Pixar.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="menu_items.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">
+      <!-- definitely find a beteter logo lol -->
+      <img class="navbar-brand" src="images/pizza_planet_logo.jpg" width="50px" height="50px" alt="Pizza Planet Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Pizza</a>
+            <a class="dropdown-item" href="#">Wings</a>
+            <a class="dropdown-item" href="#">Sides</a>
+            <a class="dropdown-item" href="#">Drinks</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Deals <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal">
+        Login
+      </button>
+    </div>
+  </nav>
+
+  <!-- Popup to sign in -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign In To Your Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <small id="forgotPW" class="form-text">
+              <a href="#">Forgot Password?</a>
+            </small>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+                Remember me
+              </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-target="#regModal">Register</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="regModal" aria-labelledby="register" aria-hidden="true">
+    <div class="modal-dialog" role="form">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Register a New Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputEmail">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmEmail">Confirm Email Address</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+
+  <!-- everything under the navbar -->
+  <div class="container-fluid bg" id="underNav">
+    <div class="container-fluid" id="menuContainer">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <img class="card-img-top" src="images/pepperoni_pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Pepperoni Pizza</h4>
+              <select id="crust-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
+                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Pan Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Hand Tossed Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="T" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Brooklyn Style</option><!-- end ngRepeat: crust in item.crusts --><option value="S" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Stuffed Crust</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="size-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
+                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
+                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
+                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
+                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+            </div>
+            <div class="card-footer">
+              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <img class="card-img-top" src="images/cheese_pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Cheese Pizza</h4>
+              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
+                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Pan Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Hand Tossed Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="T" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Brooklyn Style</option><!-- end ngRepeat: crust in item.crusts --><option value="S" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Stuffed Crust</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="size-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
+                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
+                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
+                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
+                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+            </div>
+            <div class="card-footer">
+              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <img class="card-img-top" src="images/meat_lovers.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Meat Lover's Pizza</h4>
+              <select id="crust-meat--pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
+                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Pan Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Hand Tossed Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="T" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Brooklyn Style</option><!-- end ngRepeat: crust in item.crusts --><option value="S" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Stuffed Crust</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="size-meat-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
+                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
+                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
+                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
+                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+            </div>
+            <div class="card-footer">
+              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <img class="card-img-top" src="images/supreme_pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Make Your Own Pizza</h4>
+              <select id="crust-meat--pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
+                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Pan Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Hand Tossed Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="T" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Brooklyn Style</option><!-- end ngRepeat: crust in item.crusts --><option value="S" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                Stuffed Crust</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="size-meat-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
+                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
+                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
+                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
+                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+            </div>
+            <div class="card-footer">
+              <a href="customPizza.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+  </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

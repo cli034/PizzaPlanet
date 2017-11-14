@@ -1,0 +1,84 @@
+body, html{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  /* overflow-y: hidden; */
+
+  font-family: 'Roboto', "Helvetica Neue",  Arial;
+}
+
+#underNav {
+  padding-top: 10px;
+}
+
+.bg {
+  background: url("images/toy_story_backdrop.jpg");
+
+  /* Set a specific height */
+  min-height: 100%;
+
+  color: white;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar-brand {
+  padding: 0px;
+  width: 100px;
+  height: 100px;
+  margin-left: -10px;
+}
+
+.jumbotron {
+  height: 300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/pizza-planet.jpg");
+}
+
+.card {
+  color: black;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+/* For bigger screens */
+@media screen and (min-width:1000px) {
+  .navbar-brand {
+    padding: 0px;
+    height: 50px;
+    width: 50px;
+    margin-left: -10px;
+  }
+
+  .card {
+    width: 60%;
+    height: 32rem;
+    color: black;
+
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+    border: 1px solid black;
+  }
+
+  .jumbotron {
+    height: 300px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("images/pizza-planet.jpg");
+  }
+
+  .dropdown-menu {
+    box-shadow: 2px 2px 3px #888888;
+  }
+
+  .navbar {
+    height: 60px;
+  }
+}

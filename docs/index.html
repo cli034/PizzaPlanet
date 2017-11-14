@@ -109,10 +109,44 @@
   </div>
 
   <!-- everything under the navbar -->
+
   <div class="container-fluid bg" id="underNav">
+    <!--
     <section class="jumbotron text-center">
     </section>
+  -->
+    <div class="carousel silde" data-ride="carousel" id="homeCarousel">
+      <!-- indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#homeCarousel" data-slide-to="1"></li>
+        <li data-target="#homeCarousel" data-slide-to="2"></li>
+      </ul>
 
+      <!-- slide show -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/slide1.jpg" alt="slide 1" width="2560" height"1440">
+        </div>
+        <div class="carousel-item">
+          <img src="images/slide2.jpg" alt="slide 2" width="1180" height="600">
+        </div>
+        <div class="carousel-item">
+          <img src="images/slide3.jpg" alt="slide 3" width="1100" height="347">
+        </div>
+      </div>
+
+      <!-- left and right controls -->
+      <a class="carousel-control-prev" href="#homeCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#homeCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!-- stuff below -->
     <div class="container-fluid" id="menuContainer">
       <div class="row">
         <div class="col-lg-6">

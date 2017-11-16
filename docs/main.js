@@ -1,3 +1,36 @@
+const auth = firebase.auth();
+
+var registerEmail = document.getElementById("registerEmail");
+var registerPassword = document.getElementById("registerPassword");
+var registerConfirmPW = document.getElementById("registerConfirmPW");
+var registerBtn = document.getElementById("registerBtn");
+
+
+function registerClick() {
+  // Store data from Register Email to firebase
+  var firebaseRef = firebase.database().ref();
+  if(registerPassword.value == registerConfirmPW.value) {
+    firebaseRef.push().set(registerEmail.value);
+    firebaseRef.push().set(registerPassword.value);
+    window.alert("You have been registered successfully!");
+  }
+  else {
+    window.alert("Passwords do not match.");
+  }
+  //firebase.auth().createUserWithEMailAndPassword(registerEmail, registerPassword);
+}
+
+// registerBtn.addEventListener('click', e => {
+//   const email = registerEmail.value;
+//   const pass = registerPassword.value;
+//   const auth = firebase.auth();
+//
+//   const promise = auth.createUserWithEMailAndPassword(registerEmail, registerPassword);
+//   promise.catch(e => console.log(e.message));
+//
+// });
+
+
 $(document).ready(function() {
   //---------------------------------------------------------------------------
   // javascript for modals
@@ -12,7 +45,6 @@ $(document).ready(function() {
     $('#registerModal').modal('show');
   });
   //---------------------------END----------------------------------------------
-
   // --------------------------------------------------------------------------
   // Javascript for checkout page
   //---------------------------------------------------------------------------

@@ -1,6 +1,8 @@
 const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 const registerConfirmPW = document.getElementById("registerConfirmPW");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 const btnRegister = document.getElementById("btnRegister");
 const btnLogin = document.getElementById("btnLogin");
 const btnLogout = document.getElementById("btnLogout");
@@ -26,6 +28,7 @@ btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
+  console.log(email);
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     console.log(error.code);
     console.log(error.message);
@@ -35,23 +38,21 @@ btnRegister.addEventListener('click', e => {
 
 //Add Login Event
 btnLogin.addEventListener('click', e => {
-  const email = registerEmail.value;
-  const pass = registerPassword.value;
+  const inputEmail = email.value;
+  const pass = password.value;
   //Sign in
-  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error){
+  console.log(inputEmail);
+  console.log(pass);
+  firebase.auth().signInWithEmailAndPassword(inputEmail, pass).catch(function(error){
     console.log(error.code);
     console.log(error.message);
   });
-  window.alert("Logged in");
-  btnLogout.style.display = "inline";
 });
 
 //Add Logout Event
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut().then(function() {
     console.log("Logged out!")
-    window.alert("Logged out");
-    btnLogout.style.display = "none";
   }, function(error) {
     console.log(error.code);
     console.log(error.message);
@@ -63,13 +64,13 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser)
   {
     console.log(firebaseUser);
-    console.log("display logout button");
+    window.alert("Logged in");
+    btnLogout.style.display = "inline";
   }
   else
   {
-    console.log('not logged in');
-    console.log("don't display logout button");
-    //window.alert("logged out");
+    window.alert("Logged out");
+    btnLogout.style.display = "none";
   }
 })
 

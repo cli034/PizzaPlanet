@@ -6,6 +6,7 @@ const password = document.getElementById("password");
 const btnRegister = document.getElementById("btnRegister");
 const btnLogin = document.getElementById("btnLogin");
 const btnLogout = document.getElementById("btnLogout");
+const btnMainLogin = document.getElementById("btnMainLogin");
 
 //add to database
 function registerClick() {
@@ -65,11 +66,13 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   {
     console.log(firebaseUser);
     window.alert("Logged in");
+    btnMainLogin.style.display = "none";
     btnLogout.style.display = "inline";
   }
   else
   {
     window.alert("Logged out");
+    btnMainLogin.style.display = "inline";
     btnLogout.style.display = "none";
   }
 })

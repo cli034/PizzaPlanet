@@ -29,8 +29,8 @@ btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
-  console.log(email);
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+    window.alert("Invalid email or password (at least 6 characters)");
     console.log(error.code);
     console.log(error.message);
   });
@@ -70,7 +70,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
   else
   {
-    window.alert("Logged out");
+    console.log("No user logged in");
     btnMainLogin.style.display = "inline";
     btnLogout.style.display = "none";
   }

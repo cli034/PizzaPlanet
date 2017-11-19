@@ -42,9 +42,8 @@ btnLogin.addEventListener('click', e => {
   const inputEmail = email.value;
   const pass = password.value;
   //Sign in
-  console.log(inputEmail);
-  console.log(pass);
   firebase.auth().signInWithEmailAndPassword(inputEmail, pass).catch(function(error){
+    window.alert("Invalid email or password");
     console.log(error.code);
     console.log(error.message);
   });

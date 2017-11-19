@@ -25,8 +25,12 @@ btnLogin.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
-  const promise = firebase.auth().signInWithEmailAndPassword(email, pass);
-  promise.catch(e => console.log(e.message));
+  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage);
+  });
+  //promise.catch(e => console.log(e.message));
 });
 
 // sign up event
@@ -34,8 +38,13 @@ btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
-  const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
-  promise.catch(e => console.log(e.message));
+  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage);
+    console.log(email);
+    console.log("FUCK YOU");
+  });
 
 });
 

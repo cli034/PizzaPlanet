@@ -1,34 +1,56 @@
-const auth = firebase.auth();
+const registerEmail = document.getElementById("registerEmail");
+const registerPassword = document.getElementById("registerPassword");
+const registerConfirmPW = document.getElementById("registerConfirmPW");
+const btnRegister = document.getElementById("btnRegister");
+const btnLogin = document.getElementById("btnLogin");
 
-var registerEmail = document.getElementById("registerEmail");
-var registerPassword = document.getElementById("registerPassword");
-var registerConfirmPW = document.getElementById("registerConfirmPW");
-var registerBtn = document.getElementById("registerBtn");
-
-
+//add to database
 function registerClick() {
   // Store data from Register Email to firebase
-  var firebaseRef = firebase.database().ref();
+  var firebaseRef = firebase.database().ref("Customers/");
   if(registerPassword.value == registerConfirmPW.value) {
-    firebaseRef.push().set(registerEmail.value);
-    firebaseRef.push().set(registerPassword.value);
+    firebaseRef.push().set({
+      email: registerEmail.value,
+      password: registerPassword.value
+    });
     window.alert("You have been registered successfully!");
   }
   else {
     window.alert("Passwords do not match.");
   }
-  //firebase.auth().createUserWithEMailAndPassword(registerEmail, registerPassword);
 }
 
-// registerBtn.addEventListener('click', e => {
-//   const email = registerEmail.value;
-//   const pass = registerPassword.value;
-//   const auth = firebase.auth();
-//
-//   const promise = auth.createUserWithEMailAndPassword(registerEmail, registerPassword);
-//   promise.catch(e => console.log(e.message));
-//
-// });
+//Add Login Event
+btnLogin.addEventListener('click', e => {
+  const email = registerEmail.value;
+  const pass = registerPassword.value;
+  //Sign in
+  const promise = firebase.auth().signInWithEmailAndPassword(email, pass);
+  promise.catch(e => console.log(e.message));
+});
+
+// sign up event
+btnRegister.addEventListener('click', e => {
+  const email = registerEmail.value;
+  const pass = registerPassword.value;
+  //Sign in
+  const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
+  promise.catch(e => console.log(e.message));
+
+});
+
+//add a realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser)
+  {
+    console.log(firebaseUser);
+  }
+  else
+  {
+    console.log('not logged in');
+    //window.alert("logged out");
+  }
+})
 
 
 $(document).ready(function() {

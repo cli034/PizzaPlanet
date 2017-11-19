@@ -42,8 +42,6 @@ btnRegister.addEventListener('click', e => {
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorMessage);
-    console.log(email);
-    console.log("FUCK YOU");
   });
 
 });

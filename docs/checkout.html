@@ -48,9 +48,10 @@
         </li>
       </ul>
 
-      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal">
+      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal" id="btnMainLogin">
         Login
       </button>
+      <button type="submit" class="btn btn-primary" style="display:none;" id="btnLogout">Log Out</button>
     </div>
   </nav>
 
@@ -86,12 +87,11 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="registerButton">Register</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" id="btnLogin">Login</button>
         </div>
       </div>
     </div>
   </div>
-
 
   <!-- Popup to register -->
   <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
@@ -122,8 +122,9 @@
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Register</button>
+          <button type="submit" class="btn btn-primary" id="btnRegister" onclick="registerClick()" data-dismiss="modal">Register</button>
         </div>
+
       </div>
     </div>
   </div>
@@ -404,15 +405,15 @@
   <script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyAyst6aDLFzDccCtN4tIMH6Ph8sZ0Nw-Qs",
-      authDomain: "pizzaplanet-f3c50.firebaseapp.com",
-      databaseURL: "https://pizzaplanet-f3c50.firebaseio.com",
-      projectId: "pizzaplanet-f3c50",
-      storageBucket: "pizzaplanet-f3c50.appspot.com",
-      messagingSenderId: "762909413359"
+      apiKey: "AIzaSyDGOFzp3RBhpQXvkcglLqOC9RVMXF-dBUw",
+      authDomain: "pizza-planet-database.firebaseapp.com",
+      databaseURL: "https://pizza-planet-database.firebaseio.com",
+      projectId: "pizza-planet-database",
+      storageBucket: "pizza-planet-database.appspot.com",
+      messagingSenderId: "758902523595"
     };
     firebase.initializeApp(config);
-  </script>
+	</script>
 
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -3,6 +3,7 @@ const registerPassword = document.getElementById("registerPassword");
 const registerConfirmPW = document.getElementById("registerConfirmPW");
 const btnRegister = document.getElementById("btnRegister");
 const btnLogin = document.getElementById("btnLogin");
+const btnLogout = document.getElementById("btnLogout");
 
 //add to database
 function registerClick() {
@@ -20,30 +21,41 @@ function registerClick() {
   }
 }
 
-//Add Login Event
-btnLogin.addEventListener('click', e => {
-  const email = registerEmail.value;
-  const pass = registerPassword.value;
-  //Sign in
-  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error){
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorMessage);
-  });
-  //promise.catch(e => console.log(e.message));
-});
-
 // sign up event
 btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorMessage);
+    console.log(error.code);
+    console.log(error.message);
   });
 
+});
+
+//Add Login Event
+btnLogin.addEventListener('click', e => {
+  const email = registerEmail.value;
+  const pass = registerPassword.value;
+  //Sign in
+  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error){
+    console.log(error.code);
+    console.log(error.message);
+  });
+  window.alert("Logged in");
+  btnLogout.style.display = "inline";
+});
+
+//Add Logout Event
+btnLogout.addEventListener('click', e => {
+  firebase.auth().signOut().then(function() {
+    console.log("Logged out!")
+    window.alert("Logged out");
+    btnLogout.style.display = "none";
+  }, function(error) {
+    console.log(error.code);
+    console.log(error.message);
+ });
 });
 
 //add a realtime listener
@@ -51,10 +63,12 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser)
   {
     console.log(firebaseUser);
+    console.log("display logout button");
   }
   else
   {
     console.log('not logged in');
+    console.log("don't display logout button");
     //window.alert("logged out");
   }
 })

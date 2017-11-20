@@ -97,7 +97,7 @@ $(document).ready(function() {
   // resets input field when closed/incorrect
   $('#loginModal').on('hidden.bs.modal', function (e) {
     $(this)
-      .find("input,textarea,select")
+      .find("input[type=password],textarea,select")
         .val('')
         .end()
       .find("input[type=checkbox], input[type=radio]")

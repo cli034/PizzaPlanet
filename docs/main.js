@@ -46,6 +46,7 @@ btnLogin.addEventListener('click', e => {
   //Sign in
   firebase.auth().signInWithEmailAndPassword(inputEmail, pass).catch(function(error){
     window.alert("Invalid email or password");
+    document.getElementById("loginModal")[0].reset();
     console.log(error.code);
     console.log(error.message);
   });
@@ -92,6 +93,29 @@ $(document).ready(function() {
   $("#registerButton").on("click", function() {
     $('#registerModal').modal('show');
   });
+
+  // resets input field when closed/incorrect
+  $('#loginModal').on('hidden.bs.modal', function (e) {
+    $(this)
+      .find("input,textarea,select")
+        .val('')
+        .end()
+      .find("input[type=checkbox], input[type=radio]")
+       .prop("checked", "")
+       .end();
+   });
+
+   $('#registerModal').on('hidden.bs.modal', function (e) {
+     $(this)
+       .find("input,textarea,select")
+         .val('')
+         .end()
+       .find("input[type=checkbox], input[type=radio]")
+        .prop("checked", "")
+        .end();
+    });
+
+
   //---------------------------END----------------------------------------------
   // --------------------------------------------------------------------------
   // Javascript for checkout page
@@ -116,14 +140,6 @@ $(document).ready(function() {
     "Brisk":3,
     "Lemonade":3,
   };
-
-  // adjust value for size
-  var sizePrice = {
-    "Large":5,
-    "Medium":3,
-    "Small":0,
-  };
-  // probably need object for custom pizza
 
   var orderSummary = [];
   var orderPrices = [];

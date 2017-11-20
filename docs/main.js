@@ -29,7 +29,9 @@ btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
-  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+  firebase.auth().createUserWithEmailAndPassword(email, pass).then(function() {
+    registerClick();
+  }, function(error){
     window.alert("Invalid email or password (at least 6 characters)");
     console.log(error.code);
     console.log(error.message);

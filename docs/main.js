@@ -24,6 +24,16 @@ function registerClick() {
   }
 }
 
+function clearRegisterModal(){
+  $('#registerModal')
+     .find("input,textarea,select")
+       .val('')
+       .end()
+     .find("input[type=checkbox], input[type=radio]")
+      .prop("checked", "")
+      .end();
+}
+
 // sign up event
 btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
@@ -35,6 +45,8 @@ btnRegister.addEventListener('click', e => {
     window.alert("Invalid email or password (at least 6 characters)");
     console.log(error.code);
     console.log(error.message);
+    clearRegisterModal();
+    clearLoginModal();
   });
 
 });
@@ -107,16 +119,6 @@ $(document).ready(function() {
        .prop("checked", "")
        .end();
    });
-
-   $('#registerModal').on('hidden.bs.modal', function (e) {
-     $(this)
-       .find("input,textarea,select")
-         .val('')
-         .end()
-       .find("input[type=checkbox], input[type=radio]")
-        .prop("checked", "")
-        .end();
-    });
 
 
   //---------------------------END----------------------------------------------

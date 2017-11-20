@@ -1,6 +1,11 @@
 const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 const registerConfirmPW = document.getElementById("registerConfirmPW");
+const inputAddress = document.getElementById("inputAddress");
+const inputAddress2 = document.getElementById("inputAddress2");
+const inputCity = document.getElementById("inputCity");
+const inputState = document.getElementById("inputState");
+const inputZip = document.getElementById("inputZip");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const btnRegister = document.getElementById("btnRegister");
@@ -15,7 +20,12 @@ function registerClick() {
   if(registerPassword.value == registerConfirmPW.value) {
     firebaseRef.push().set({
       email: registerEmail.value,
-      password: registerPassword.value
+      password: registerPassword.value,
+      address1: inputAddress.value,
+      address2: inputAddress2.value,
+      city: inputCity.value,
+      state: inputState.value,
+      zip: inputZip.value
     });
     window.alert("You have been registered successfully!");
   }

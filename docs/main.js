@@ -70,12 +70,14 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     console.log("Logged in");
     btnMainLogin.style.display = "none";
     btnLogout.style.display = "inline";
+    btnAcc.style.display = "inline";
   }
   else
   {
     console.log("No user logged in");
     btnMainLogin.style.display = "inline";
     btnLogout.style.display = "none";
+    btnAcc.style.display="none";
   }
 })
 
@@ -97,6 +99,7 @@ $(document).ready(function() {
   // resets input field when closed/incorrect
   $('#loginModal').on('hidden.bs.modal', function (e) {
     $(this)
+      // just clear the password field
       .find("input[type=password],textarea,select")
         .val('')
         .end()

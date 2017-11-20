@@ -8,7 +8,7 @@
   <meta name="robots" content="nofollow">
 
   <meta charset="utf-8">
-  <title>Thank You! - Pizza Planet</title>
+  <title>Profile - Pizza Planet</title>
   <meta name="description" content="Pizza Planet Website. Definitely a parody website. Don't sue us Pixar.">
 
   <!-- CSS -->
@@ -17,6 +17,13 @@
 </head>
 
 <body>
+  <!--                 Everything Above Navbar                               -->
+  <!-- TODO: Do I really need to rerender this every page...?-->
+
+  <!-- Nav Bar -->
+  <!--                 Everything Above Navbar                               -->
+  <!-- TODO: Do I really need to rerender this every page...?-->
+
   <!-- Nav Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.html">
@@ -52,7 +59,7 @@
       <button type="submit" class="btn btn-primary" style="display:none;" id="btnLogout">Log Out</button>
     </div>
   </nav>
-
+  
   <!-- TODO: modal backend -->
   <!-- Popup to sign in -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
@@ -124,14 +131,40 @@
   <!--                  everything under the navbar                         -->
   <div class="container-fluid bg" id="underNav">
     <div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<center>
-						<h1 style="color:black">Thank you for purchasing! Your order is being processed.</h1>
-						<a href="index.html" style="font-size: 30px; color:rgb(62, 14, 151)">Return to homepage</a>
-					</center>
-				</div>
-			</div>
+      <div class="row">
+        <div class="col align-self-center">
+          <div class="card" id="profileCard">
+            <div class="card-header">
+              <h3 class="card-title">Account</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-8">
+                  <h4>Change Password</h4>
+                  <hr>
+                  <div class="form-group">
+                    <label for="inputOldPassword">Old Password</label>
+                    <input type="password" class="form-control" id="oldPassword" placeholder="Enter Old Password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputNewPassword">New Password</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Enter New Password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" class="form-control" id="confirmNewPW" placeholder="Confirm New Password" required>
+                  </div>
+                  <button type="button" class="btn btn-info" id="updatePWBtn">Update Password</button>
+                </div>
+                <div class="col-lg-4">
+                  <img src="https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-10n7ovy_9b42e613.jpeg" width="100%" height="100%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 

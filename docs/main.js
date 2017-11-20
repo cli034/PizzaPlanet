@@ -66,7 +66,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser)
   {
     console.log(firebaseUser);
-    window.alert("Logged in");
+    console.log("Logged in");
     btnMainLogin.style.display = "none";
     btnLogout.style.display = "inline";
   }

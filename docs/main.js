@@ -1,3 +1,82 @@
+const registerEmail = document.getElementById("registerEmail");
+const registerPassword = document.getElementById("registerPassword");
+const registerConfirmPW = document.getElementById("registerConfirmPW");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const btnRegister = document.getElementById("btnRegister");
+const btnLogin = document.getElementById("btnLogin");
+const btnLogout = document.getElementById("btnLogout");
+const btnMainLogin = document.getElementById("btnMainLogin");
+
+//add to database
+function registerClick() {
+  // Store data from Register Email to firebase
+  var firebaseRef = firebase.database().ref("Customers/");
+  if(registerPassword.value == registerConfirmPW.value) {
+    firebaseRef.push().set({
+      email: registerEmail.value,
+      password: registerPassword.value
+    });
+    window.alert("You have been registered successfully!");
+  }
+  else {
+    window.alert("Passwords do not match.");
+  }
+}
+
+// sign up event
+btnRegister.addEventListener('click', e => {
+  const email = registerEmail.value;
+  const pass = registerPassword.value;
+  //Sign in
+  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+    window.alert("Invalid email or password (at least 6 characters)");
+    console.log(error.code);
+    console.log(error.message);
+  });
+
+});
+
+//Add Login Event
+btnLogin.addEventListener('click', e => {
+  const inputEmail = email.value;
+  const pass = password.value;
+  //Sign in
+  firebase.auth().signInWithEmailAndPassword(inputEmail, pass).catch(function(error){
+    window.alert("Invalid email or password");
+    console.log(error.code);
+    console.log(error.message);
+  });
+});
+
+//Add Logout Event
+btnLogout.addEventListener('click', e => {
+  firebase.auth().signOut().then(function() {
+    console.log("Logged out!")
+  }, function(error) {
+    console.log(error.code);
+    console.log(error.message);
+ });
+});
+
+//add a realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser)
+  {
+    console.log(firebaseUser);
+    window.alert("Logged in");
+    btnMainLogin.style.display = "none";
+    btnLogout.style.display = "inline";
+  }
+  else
+  {
+    console.log("No user logged in");
+    btnMainLogin.style.display = "inline";
+    btnLogout.style.display = "none";
+  }
+})
+
+
 $(document).ready(function() {
   //---------------------------------------------------------------------------
   // javascript for modals
@@ -12,7 +91,6 @@ $(document).ready(function() {
     $('#registerModal').modal('show');
   });
   //---------------------------END----------------------------------------------
-
   // --------------------------------------------------------------------------
   // Javascript for checkout page
   //---------------------------------------------------------------------------

@@ -148,104 +148,115 @@
       <div class="jumbotron text-center" id="customPizzaJumbotron">
       </div>
 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-header">
-								<h2>Custom Pizza</h2>
-							</div>
-							<div class="card-body">
-								<h3>Size</h3>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customSize" value="0" checked> Small (10")
-									</label>
-									&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customSize" value="3"> Medium (12")
-									</label>
-									<label class="form-check-label">
-										<input class="form check-input" type="radio" name="customSize" value="6"> Large (14")
-									</label>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h2>Custom Pizza</h2>
+              </div>
+              <div class="card-body">
+                <h3>Size</h3>
+                <div id="customSizeRadio">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customSize" value="0" checked> Small (10")
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customSize" value="3"> Medium (12")
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form check-input" type="radio" name="customSize" value="6"> Large (14")
+                    </label>
+                  </div>
+                </div>
 
-								</div>
-								<img src="images/customOrder.jpg" class="float-right" alt="pic" width="400" height="400">
-								<h3>Crust</h3>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customCrust" value="0" checked> Thin Crust
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customCrust" value="0"> Thick Crust
-									</label>
-								</div>
-								<h3>Sauce</h3>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customSauce" value="0" checked> Marinara Sauce
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customSauce" value="0"> Garlic Parmesan White Sauce
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="customSauce" value="0"> Alfredo Sauce
-									</label>
-								</div>
-								<h3>Toppings</h3>
-								<div class="form-check">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Pepperoni
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Mushrooms
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Onions
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Sausage
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Bacon
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Black Olives
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Tomatoes
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Pineapple
-									</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Spinach
-									</label>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" value="1"> Cheese
-									</label>
-								</div>
-							</div>
-							<div class="card-footer">
-									<a href="checkout.html" class="btn btn-primary">Place Your Order</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-  </div>
+                <img src="images/customOrder.jpg" class="float-right" alt="pic" width="400" height="400">
+
+                <h3>Crust</h3>
+                <div id="customCrustRadio">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customCrust" value="0" checked> Thin Crust
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customCrust" value="1"> Thick Crust
+                    </label>
+                  </div>
+                </div>
+
+                <h3>Sauce</h3>
+                <div id="customSauceRadio">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customSauce" value="0" checked> Marinara Sauce
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customSauce" value="0"> Garlic Parmesan White Sauce
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="customSauce" value="0"> Alfredo Sauce
+                    </label>
+                  </div>
+                </div>
+
+                <h3>Toppings</h3>
+                <div id="customTopping"
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Pepperoni
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Mushrooms
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Onions
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Sausage
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Bacon
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Black Olives
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Tomatoes
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Pineapple
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Spinach
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="1"> Cheese
+                    </label>
+                  </div>
+                </div>
+
+              <div class="card-footer">
+                <a href="checkout.html" class="btn btn-primary" onclick="storeCustomPizza()">Place Your Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
   <!-- Scripts -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->

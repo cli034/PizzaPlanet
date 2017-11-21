@@ -21,6 +21,12 @@ const updatePWBtn = document.getElementById("updatePWBtn");
 
 const actuallyDelete = document.getElementById("actuallyDelete");
 
+const newAddress = document.getElementById("newAddress");
+const newAddress2 = document.getElementById("newAddress2");
+const newCity = document.getElementById("newCity");
+const newState = document.getElementById("newState");
+const newZip = document.getElementById("newZip");
+
 var prices = {
   "Supreme Pizza":10,
   "Pepperoni Pizza":9,
@@ -232,6 +238,35 @@ function deleteAccount() {
       location.href = "index.html";
     }).catch(function(error) {
       window.alert("Delete Error: Try again");
+    });
+  }
+}
+
+function updateAddress() {
+  var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
+  var updateCheck = 0;
+  
+  if (user) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()) {
+        var userInfo = snapshot.child(key).val();
+        var uEmail = userInfo.email.toLowerCase();
+
+        if (uEmail == user.email)
+        {
+          customerRef.child(key + '/address1').set(newAddress.value);
+          customerRef.child(key + '/address2').set(newAddress2.value);
+          customerRef.child(key + '/city').set(newCity.value);
+          customerRef.child(key + '/state').set(newState.value);
+          customerRef.child(key + '/zip').set(newZip.value);
+          updateCheck = 1;
+          window.alert("Address updated successfully!");
+        }
+      }
+      if (updateCheck == 0)
+        window.alert("Address update failed");
     });
   }
 }

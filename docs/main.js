@@ -27,23 +27,32 @@ function addItemToMenu() {
   var customerRef = database.ref('Customers');
 
   if (user != null) {
+
     customerRef.once('value').then(function(snapshot) {
       for (var key in snapshot.val()){
+        var userInfo = snapshot.child(key).val();
 
-        var emailList = snapshot.child(key).val();
+        var currEmail = String(userInfo.email);
+        var validEmail = currEmail.toLowerCase();
 
-        if (emailList) {
-          window.alert("Look it exists");
-          console.log(emailList.city);
+        if (validEmail == user.email) {
+
+          var postData = [];
+          
+          for (var i = 0; i < orderSummary; i = i + 2) {
+            postData.push(orderSummary.at[i]);
+          }
+
+          var updates = {};
+          updates['Customers/' + key + '/order/'] = postData;
+
+          return firebase.database().ref().update(updates);
         }
-        if (emailList.email == user.email) {
-          //push all the menu items to here
-        }
-
       }
     });
   }
 }
+
 
 //add to database
 function registerClick() {
@@ -57,7 +66,8 @@ function registerClick() {
       address2: inputAddress2.value,
       city: inputCity.value,
       state: inputState.value,
-      zip: inputZip.value
+      zip: inputZip.value,
+      order: ''
     });
     window.alert("You have been registered successfully!");
   }

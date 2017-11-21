@@ -20,7 +20,13 @@ const confirmNewPW = document.getElementById("confirmNewPW");
 const updatePWBtn = document.getElementById("updatePWBtn");
 
 const actuallyDelete = document.getElementById("actuallyDelete");
-
+/*
+const newAddress = document.getElementById("newAddress");
+const newAddress2 = document.getElementById("newAddress2");
+const newCity = document.getElementById("newCity");
+const newState = document.getElementById("newState");
+const newZip = document.getElementById("newZip");
+*/
 function addItemToMenu() {
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -176,11 +182,24 @@ function changePassword() {
   }
 }
 
-
 function deleteAccount() {
   var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
 
   if (user) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()) {
+        var userInfo = snapshot.child(key).val();
+        var uEmail = userInfo.email.toLowerCase(); 
+
+        if (uEmail == user.email)
+        {
+          customerRef.child(key).remove();
+        }
+      }    
+    });
+    
     user.delete().then(function() {
       window.alert("Account deleted");
     }).catch(function(error) {

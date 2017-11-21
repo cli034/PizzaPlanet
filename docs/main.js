@@ -61,6 +61,7 @@ function addItemToMenu() {
         if (validEmail == user.email) {
 
           var postData = [];
+<<<<<<< HEAD
 
           // for (var i = 0; i < orderSummary; i = i + 2) {
           //   postData.push(orderSummary.at[i]);
@@ -69,6 +70,16 @@ function addItemToMenu() {
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;
 
+=======
+
+          // for (var i = 0; i < orderSummary; i = i + 2) {
+          //   postData.push(orderSummary.at[i]);
+          // }
+
+          var updates = {};
+          updates['Customers/' + key + '/order/'] = postData;
+
+>>>>>>> customPizzaCheckOut
           return firebase.database().ref().update(updates);
         }
       }

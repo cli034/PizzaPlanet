@@ -148,20 +148,28 @@ function changePassword() {
         var userInfo = snapshot.child(key).val();
         var uEmail = userInfo.email.toLowerCase();
         
-        if ((uEmail == user.email) && (oldPassword.value == userInfo.password) ) {
-          if (newPassword.value == confirmNewPW.value) {
-            user.updatePassword(newPassword.value).then(function() {
-              window.alert("Password Updated!");
-              customerRef.child(key + '/password').set(newPassword.value);
-            }).catch(function(error) {
-              window.alert("Password not updated");
-            });
+        if (uEmail == user.email) {
+          if (oldPassword.value == userInfo.password) {
+            if (newPassword.value == confirmNewPW.value) {
+              user.updatePassword(newPassword.value).then(function() {
+                window.alert("Password Updated!");
+                customerRef.child(key + '/password').set(newPassword.value);
+              }).catch(function(error) {
+                window.alert("Password not updated");
+              });
+            }
+            else
+            {
+              window.alert("New Passwords do not match");
+              break;
+            }
           }
           else
-            window.alert("Password does not match");
+          {
+            window.alert("Old Password does not match");
+            break;
+          }
         }
-        else
-          window.alert("Old Password does not match");
       }
     });
     

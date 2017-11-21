@@ -29,32 +29,6 @@ const newZip = document.getElementById("newZip");
 
 const btnCoupon = document.getElementById("btnCoupon");
 
-
-// For coupons page
-// TODO: Limit 1 coupon per purchase
-// Save coupon until checkout
-// Apply at checkout
-
-function couponClick() {
-  if(inputCoupon.value == "THNKSGVN2017") {
-    window.alert("Congratulations! You have a free order of 6-piece wings!");
-  }
-  else if(inputCoupon.value == "XMAS2017") {
-    window.alert("Congratulations! You have 25% off at checkout!");
-  }
-  else if(inputCoupon.value == "BOGOPZZA") {
-    window.alert("Congratulations! You have buy one, get one free small pizza!");
-  }
-  else if(inputCoupon.value == "VETERAN2017") {
-    window.alert("Sorry! This coupon has expired.");
-  }
-  else {
-    window.alert("Invalid Promo Code.");
-  }
-}
-
-
-
 var prices = {
   "Supreme Pizza":10,
   "Pepperoni Pizza":9,
@@ -110,6 +84,28 @@ function addItemToMenu() {
   }
 }
 
+// For coupons page
+// TODO: Limit 1 coupon per purchase
+// Save coupon until checkout
+// Apply at checkout
+
+function couponClick() {
+  if(inputCoupon.value == "THNKSGVN2017") {
+    window.alert("Congratulations! You have a free order of 6-piece wings!");
+  }
+  else if(inputCoupon.value == "XMAS2017") {
+    window.alert("Congratulations! You have 25% off at checkout!");
+  }
+  else if(inputCoupon.value == "BOGOPZZA") {
+    window.alert("Congratulations! You have buy one, get one free small pizza!");
+  }
+  else if(inputCoupon.value == "VETERAN2017") {
+    window.alert("Sorry! This coupon has expired.");
+  }
+  else {
+    window.alert("Invalid Promo Code.");
+  }
+}
 
 //add to database
 function registerClick() {

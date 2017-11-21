@@ -21,6 +21,29 @@ const updatePWBtn = document.getElementById("updatePWBtn");
 
 const actuallyDelete = document.getElementById("actuallyDelete");
 
+var prices = {
+  "Supreme Pizza":10,
+  "Pepperoni Pizza":9,
+  "Cheese Pizza":8,
+  "Custom Pizza":11,  //once again probably change this
+  "Buffalo Wings":8,
+  "Lemon Pepper Wings":8,
+  "Hot Wings":8,
+  "Breadsticks":6,
+  "Fries":5,
+  "Cheese Sticks":6,
+  "Salad":5,
+  "Mashed Potatoes":5,
+  "Coca-Cola":2,
+  "Mountain Dew":2,
+  "Crush":2,
+  "Brisk":2,
+  "Lemonade":2,
+};
+var orderSummary = [];
+var orderPrices = [];
+
+
 function addItemToMenu() {
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -175,6 +198,27 @@ function deleteAccount() {
   }
 }
 
+function storeCustomPizza() {
+  var priceTest = 0;
+  priceTest += Number($('input[name=customSize]:checked', '#customSizeRadio').val());
+  priceTest += Number($('input[name=customCrust]:checked', '#customCrustRadio').val());
+  priceTest += document.querySelectorAll('input[type="checkbox"]:checked').length;
+  console.log(priceTest);
+  // store price into window.name because easy way of transfering js variables
+  window.name = priceTest.toString();
+}
+
+function customPizzaFunction(){
+  if(window.name != ""){
+    $("#customPizzaCheck").prop("checked", true);
+    if(!orderSummary.includes("Custom Pizza")){
+      orderSummary.push("Custom Pizza");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + window.name);
+      orderPrices.push("<br \>");
+    }
+  }
+}
 
 $(document).ready(function() {
   //---------------------------------------------------------------------------
@@ -189,7 +233,6 @@ $(document).ready(function() {
   $("#registerButton").on("click", function() {
     $('#registerModal').modal('show');
   });
-
   // resets input field when closed/incorrect
   $('#loginModal').on('hidden.bs.modal', function (e) {
     $(this)
@@ -201,36 +244,10 @@ $(document).ready(function() {
        .prop("checked", "")
        .end();
    });
-
-
   //---------------------------END----------------------------------------------
   // --------------------------------------------------------------------------
   // Javascript for checkout page
   //---------------------------------------------------------------------------
-  // this will be on database when we figure it out
-  var prices = {
-    "Supreme Pizza":10,
-    "Pepperoni Pizza":9,
-    "Cheese Pizza":8,
-    "Custom Pizza":11,  //once again probably change this
-    "Buffalo Wings":8,
-    "Lemon Pepper Wings":8,
-    "Hot Wings":8,
-    "Breadsticks":6,
-    "Fries":5,
-    "Cheese Sticks":6,
-    "Salad":5,
-    "Mashed Potatoes":5,
-    "Coca-Cola":3,
-    "Mountain Dew":3,
-    "Crush":3,
-    "Brisk":3,
-    "Lemonade":3,
-  };
-
-  var orderSummary = [];
-  var orderPrices = [];
-
   function calcTotalSum(){
     var total = 0;
     for(var i = 0; i < orderPrices.length; i++){
@@ -424,14 +441,6 @@ $(document).ready(function() {
         }
       }
       // probably gonna need to implement custom pizza differently
-      if(document.getElementById("customPizzaCheck").checked){
-        if(!orderSummary.includes("Custom Pizza")){
-          orderSummary.push("Custom Pizza");
-          orderSummary.push("<br \>");
-          orderPrices.push("$" + prices["Custom Pizza"].toString());
-          orderPrices.push("<br \>");
-        }
-      }
       if(document.getElementById("buffaloWingCheck").checked){
         $("#wingsRadio1").removeAttr('hidden');
         if(!orderSummary.includes("Buffalo Wings")){
@@ -553,6 +562,7 @@ $(document).ready(function() {
     checkMark();
   });
 
+  customPizzaFunction();
   checkMark();
   changeOrderSum();
   //---------------------------END----------------------------------------------

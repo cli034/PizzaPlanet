@@ -13,6 +13,27 @@ const btnLogin = document.getElementById("btnLogin");
 const btnLogout = document.getElementById("btnLogout");
 const btnMainLogin = document.getElementById("btnMainLogin");
 
+function addItemToMenu() {
+  var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
+
+  if (user != null) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()){
+
+        var emailList = snapshot.child(key).val();
+        if (emailList) {
+          window.alert("Look it exists");
+        }
+        if (emailList.email == user.email) {
+          //add appropriate items to menu
+        }
+
+      }
+    });
+  }
+}
 //add to database
 function registerClick() {
   // Store data from Register Email to firebase

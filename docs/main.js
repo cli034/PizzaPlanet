@@ -229,6 +229,7 @@ function deleteAccount() {
 
     user.delete().then(function() {
       window.alert("Account deleted");
+      location.href = "index.html";
     }).catch(function(error) {
       window.alert("Delete Error: Try again");
     });

@@ -49,16 +49,18 @@ btnRegister.addEventListener('click', e => {
   const email = registerEmail.value;
   const pass = registerPassword.value;
   //Sign in
-  firebase.auth().createUserWithEmailAndPassword(email, pass).then(function() {
-    registerClick();
-  }, function(error){
-    window.alert("Invalid email or password (at least 6 characters)");
-    console.log(error.code);
-    console.log(error.message);
-    clearRegisterModal();
-    clearLoginModal();
-  });
-
+  if (registerPassword.value == registerConfirmPW.value)
+    firebase.auth().createUserWithEmailAndPassword(email, pass).then(function() {
+      registerClick();
+    }, function(error){
+      window.alert("Invalid email or password (at least 6 characters)");
+      console.log(error.code);
+      console.log(error.message);
+      clearRegisterModal();
+      clearLoginModal();
+    });
+  else
+    window.alert("Passwords do not match");
 });
 
 //Add Login Event
@@ -93,6 +95,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnMainLogin.style.display = "none";
     btnLogout.style.display = "inline";
     btnAcc.style.display = "inline";
+    //getUserInfo();
   }
   else
   {
@@ -101,8 +104,57 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnLogout.style.display = "none";
     btnAcc.style.display="none";
   }
-})
+});
+/*
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user)
+  {
+    var userInfoRef = firebase.database().ref("Customers");
+    var key;
+    var userEmail;
+    var userPass;
+    var userAddress1;
 
+    userInfoRef.once("value").then(function(snapshot) {
+      key = snapshot.val();
+      
+      userEmail = snapshot.child(key).child("email").val();
+      userPass = snapshot.child(key).child("password").val();
+      userAddress1 = snapshot.child(key).child("address1").val();
+      console.log(userEmail);
+      console.log(userPass);
+      console.log(userAddress1);
+    });
+    //console.log(key);
+  }
+  else
+    console.log("NOPE");
+});
+*/
+/*
+function getUserInfo() {
+  var user = firebase.auth().currentUser;
+  var uid = user.uid;
+  var userEmail;
+  var userPass;
+  var userAddress1;
+
+  if (user != null) {
+    var userInfoRef = firebase.database().ref("Customers").child(uid);
+    
+    userInfoRef.on("child_added", snap => {
+      userEmail = snap.child("email").val();
+      userPass = snap.child("password").val();
+      userAddress1 = snap.child("address1").val();
+      console.log(userEmail);
+      console.log(userPass);
+      console.log(userAddress1);
+    });
+  }
+  else
+    console.log("NOPE");
+}
+*/
 
 $(document).ready(function() {
   //---------------------------------------------------------------------------

@@ -103,7 +103,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnMainLogin.style.display = "none";
     btnLogout.style.display = "inline";
     btnAcc.style.display = "inline";
-    //getUserInfo();
   }
   else
   {
@@ -117,76 +116,31 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 function changePassword() {
   var user = firebase.auth().currentUser;
 
-  if (newPassword.value == confirmNewPW.value) {
-    user.updatePassword(newPassword.value).then(function() {
-      window.alert("Password Updated!");
-    }).catch(function(error) {
-      window.alert("Password not updated");
-    });
+  if (user) {
+    if (newPassword.value == confirmNewPW.value) {
+      user.updatePassword(newPassword.value).then(function() {
+        window.alert("Password Updated!");
+      }).catch(function(error) {
+        window.alert("Password not updated");
+      });
+    }
+    else
+      window.alert("Password do not match");
   }
-  else
-    window.alert("Password do not match");
 }
 
 function deleteAccount() {
   var user = firebase.auth().currentUser;
 
-  user.delete().then(function() {
-    window.alert("Account deleted");
-  }).catch(function(error) {
-    window.alert("Delete Error: Try again");
-  });
-}
-/*
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user)
-  {
-    var userInfoRef = firebase.database().ref("Customers");
-    var key;
-    var userEmail;
-    var userPass;
-    var userAddress1;
-
-    userInfoRef.once("value").then(function(snapshot) {
-      key = snapshot.val();
-      
-      userEmail = snapshot.child(key).child("email").val();
-      userPass = snapshot.child(key).child("password").val();
-      userAddress1 = snapshot.child(key).child("address1").val();
-      console.log(userEmail);
-      console.log(userPass);
-      console.log(userAddress1);
-    });
-    //console.log(key);
-  }
-  else
-    console.log("NOPE");
-});
-*/
-/*
-function getUserInfo() {
-  var user = firebase.auth().currentUser;
-  var uid = user.uid;
-  var userEmail;
-  var userPass;
-  var userAddress1;
-
-  if (user != null) {
-    var userInfoRef = firebase.database().ref("Customers").child(uid);
-    
-    userInfoRef.on("child_added", snap => {
-      userEmail = snap.child("email").val();
-      userPass = snap.child("password").val();
-      userAddress1 = snap.child("address1").val();
-      console.log(userEmail);
-      console.log(userPass);
-      console.log(userAddress1);
+  if (user) {
+    user.delete().then(function() {
+      window.alert("Account deleted");
+    }).catch(function(error) {
+      window.alert("Delete Error: Try again");
     });
   }
-  else
-    console.log("NOPE");
 }
-*/
+
 
 $(document).ready(function() {
   //---------------------------------------------------------------------------

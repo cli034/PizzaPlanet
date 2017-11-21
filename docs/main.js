@@ -21,6 +21,30 @@ const updatePWBtn = document.getElementById("updatePWBtn");
 
 const actuallyDelete = document.getElementById("actuallyDelete");
 
+function addItemToMenu() {
+  var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
+
+  if (user != null) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()){
+
+        var emailList = snapshot.child(key).val();
+
+        if (emailList) {
+          window.alert("Look it exists");
+          console.log(emailList.city);
+        }
+        if (emailList.email == user.email) {
+          //push all the menu items to here
+        }
+
+      }
+    });
+  }
+}
+
 //add to database
 function registerClick() {
   // Store data from Register Email to firebase

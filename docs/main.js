@@ -20,36 +20,6 @@ const confirmNewPW = document.getElementById("confirmNewPW");
 const updatePWBtn = document.getElementById("updatePWBtn");
 
 const actuallyDelete = document.getElementById("actuallyDelete");
-/*
-const newAddress = document.getElementById("newAddress");
-const newAddress2 = document.getElementById("newAddress2");
-const newCity = document.getElementById("newCity");
-const newState = document.getElementById("newState");
-const newZip = document.getElementById("newZip");
-*/
-function addItemToMenu() {
-  var user = firebase.auth().currentUser;
-  var database = firebase.database();
-  var customerRef = database.ref('Customers');
-
-  if (user != null) {
-    customerRef.once('value').then(function(snapshot) {
-      for (var key in snapshot.val()){
-
-        var emailList = snapshot.child(key).val();
-
-        if (emailList) {
-          window.alert("Look it exists");
-          console.log(emailList.city);
-        }
-        if (emailList.email == user.email) {
-          //push all the menu items to here
-        }
-
-      }
-    });
-  }
-}
 
 //add to database
 function registerClick() {

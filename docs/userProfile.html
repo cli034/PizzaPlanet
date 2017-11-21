@@ -167,7 +167,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Get me out of here</button>
-          <button type="button" class="btn btn-danger" id="actuallyDelete">Delete Account</button>
+          <button type="button" class="btn btn-danger" id="actuallyDelete" onclick="deleteAccount()">Delete Account</button>
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@
                     <label for="confirmNewPassword">Confirm New Password</label>
                     <input type="password" class="form-control" id="confirmNewPW" placeholder="Confirm New Password" required>
                   </div>
-                  <button type="button" class="btn btn-info" id="updatePWBtn">Update Password</button>
+                  <button type="button" class="btn btn-info" onclick="changePassword()" id="updatePWBtn">Update Password</button>
                 </div>
                 <div class="col-lg-4">
                   <img src="https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-10n7ovy_9b42e613.jpeg" width="100%" height="100%">

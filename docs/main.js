@@ -6,12 +6,20 @@ const inputAddress2 = document.getElementById("inputAddress2");
 const inputCity = document.getElementById("inputCity");
 const inputState = document.getElementById("inputState");
 const inputZip = document.getElementById("inputZip");
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const btnRegister = document.getElementById("btnRegister");
 const btnLogin = document.getElementById("btnLogin");
 const btnLogout = document.getElementById("btnLogout");
 const btnMainLogin = document.getElementById("btnMainLogin");
+
+const oldPassword = document.getElementById("oldPassword");
+const newPassword = document.getElementById("newPassword");
+const confirmNewPW = document.getElementById("confirmNewPW");
+const updatePWBtn = document.getElementById("updatePWBtn");
+
+const actuallyDelete = document.getElementById("actuallyDelete");
 
 //add to database
 function registerClick() {
@@ -105,6 +113,30 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnAcc.style.display="none";
   }
 });
+
+function changePassword() {
+  var user = firebase.auth().currentUser;
+
+  if (newPassword.value == confirmNewPW.value) {
+    user.updatePassword(newPassword.value).then(function() {
+      window.alert("Password Updated!");
+    }).catch(function(error) {
+      window.alert("Password not updated");
+    });
+  }
+  else
+    window.alert("Password do not match");
+}
+
+function deleteAccount() {
+  var user = firebase.auth().currentUser;
+
+  user.delete().then(function() {
+    window.alert("Account deleted");
+  }).catch(function(error) {
+    window.alert("Delete Error: Try again");
+  });
+}
 /*
 firebase.auth().onAuthStateChanged(function(user) {
   if (user)

@@ -74,6 +74,18 @@ background-size: cover;
   border: 1px solid black;
 }
 
+#drinkCard {
+  width: 90%;
+  height: auto;
+  color: black;
+
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  border: 1px solid black;
+}
+
 #profileCard {
   width: auto;
   height: auto;

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta name="googlebot" content="noarchive">
+  <meta name="googlebot" content="noindex">
+  <meta name="robots" content="noindex">
+  <meta name="robots" content="nofollow">
+
+  <meta charset="utf-8">
+  <title>Home - Pizza Planet</title>
+  <meta name="description" content="Pizza Planet Website. Definitely a parody website. Don't sue us Pixar.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!--                 Everything Above Navbar                               -->
+  <!-- TODO: Do I really need to rerender this every page...?-->
+
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">
+      <!-- definitely find a beteter logo lol -->
+      <img class="navbar-brand" src="images/pizza_planet_logo.jpg" width="50px" height="50px" alt="Pizza Planet Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="pizza.html">Pizza</a>
+            <a class="dropdown-item" href="wings.html">Wings</a>
+            <a class="dropdown-item" href="#">Sides</a>
+            <a class="dropdown-item" href="drinks.html">Drinks</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Coupons <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal" id="btnMainLogin">
+        Login
+      </button>
+      <a class="btn btn-outline-info" style="display:none; margin-right:5px;" id="btnAcc" href="userProfile.html" role="button">Account</a>
+      <a class="btn btn-primary" style="display:none;" id="btnLogout" href="index.html" role="button">Log Out</a>
+    </div>
+  </nav>
+
+  <!-- Popup to sign in -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Sign In To Your Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <small id="forgotPW" class="form-text">
+              <a href="#">Forgot Password?</a>
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="registerButton">Register</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" id="btnLogin">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup to register -->
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog" role="form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Register a New Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="inputEmail">Email Address</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Enter Email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPassword">Enter Password</label>
+            <input type="email" class="form-control" id="registerPassword" placeholder="Enter Password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="email" class="form-control" id="registerConfirmPW" placeholder="Confirm Password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1200 Park Ave">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="Emeryville">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Not Selected</option>
+                <option>California</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip" placeholder="94608">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="btnRegister" data-dismiss="modal">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--                  everything under the navbar                         -->
+
+
+
+
+  <div class="form-group">
+    <label for="inputCoupon">Coupons</label>
+    <input type="text" class="form-control" id="inputCoupon" placeholder="Enter Promo Code"></input>
+    <button type="submit" onClick="couponClick()" class="btn btn-primary" id="btnCoupon" data-dismiss="modal">Enter</button>
+  </div>
+
+
+
+
+  <!-- Scripts -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
+
+  <!--Firebase Init-->
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDGOFzp3RBhpQXvkcglLqOC9RVMXF-dBUw",
+      authDomain: "pizza-planet-database.firebaseapp.com",
+      databaseURL: "https://pizza-planet-database.firebaseio.com",
+      projectId: "pizza-planet-database",
+      storageBucket: "pizza-planet-database.appspot.com",
+      messagingSenderId: "758902523595"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -38,10 +38,10 @@ function addItemToMenu() {
         if (validEmail == user.email) {
 
           var postData = [];
-          
-          for (var i = 0; i < orderSummary; i = i + 2) {
-            postData.push(orderSummary.at[i]);
-          }
+
+          // for (var i = 0; i < orderSummary; i = i + 2) {
+          //   postData.push(orderSummary.at[i]);
+          // }
 
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;

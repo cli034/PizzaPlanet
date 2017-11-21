@@ -61,7 +61,6 @@ function addItemToMenu() {
         if (validEmail == user.email) {
 
           var postData = [];
-<<<<<<< HEAD
 
           // for (var i = 0; i < orderSummary; i = i + 2) {
           //   postData.push(orderSummary.at[i]);
@@ -70,16 +69,6 @@ function addItemToMenu() {
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;
 
-=======
-
-          // for (var i = 0; i < orderSummary; i = i + 2) {
-          //   postData.push(orderSummary.at[i]);
-          // }
-
-          var updates = {};
-          updates['Customers/' + key + '/order/'] = postData;
-
->>>>>>> customPizzaCheckOut
           return firebase.database().ref().update(updates);
         }
       }
@@ -191,7 +180,7 @@ function changePassword() {
       for (var key in snapshot.val()) {
         var userInfo = snapshot.child(key).val();
         var uEmail = userInfo.email.toLowerCase();
-        
+
         if (uEmail == user.email) {
           if (oldPassword.value == userInfo.password) {
             if (newPassword.value == confirmNewPW.value) {
@@ -216,7 +205,7 @@ function changePassword() {
         }
       }
     });
-    
+
   }
 }
 
@@ -229,15 +218,15 @@ function deleteAccount() {
     customerRef.once('value').then(function(snapshot) {
       for (var key in snapshot.val()) {
         var userInfo = snapshot.child(key).val();
-        var uEmail = userInfo.email.toLowerCase(); 
+        var uEmail = userInfo.email.toLowerCase();
 
         if (uEmail == user.email)
         {
           customerRef.child(key).remove();
         }
-      }    
+      }
     });
-    
+
     user.delete().then(function() {
       window.alert("Account deleted");
     }).catch(function(error) {

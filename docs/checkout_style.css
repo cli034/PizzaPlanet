@@ -54,13 +54,12 @@ body, html{
 
 
 #recentOrderBox{
-  width: 15%;
+  width: 18%;
   position: fixed;
 }
 
 #summaryBox{
-  margin-top: 10%;
-  width: 15%;
+  width: 18%;
   position: fixed;  /* follows you as you scroll */
 }
 

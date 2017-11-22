@@ -91,7 +91,6 @@ function getEmail() {
   $("#currEmail").text(user.email);
 }
 
-
 function addItemToMenu(){
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -119,6 +118,9 @@ function addItemToMenu(){
         }
       }
     });
+  } else{
+    window.alert("Please login, or sign up.")
+    $("#loginModal").modal("toggle");
   }
 }
 
@@ -559,6 +561,7 @@ function calcTotalSum(){
   }
   if(thanksgivingCoupon && (orderSummary.includes("Buffalo Wings") || orderSummary.includes("Hot Wings") || orderSummary.includes("Lemon Pepper Wings")))
     total -= 3;
+
   $("#totalCost").html("$" + total.toString());
 }
 

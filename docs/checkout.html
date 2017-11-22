@@ -144,6 +144,8 @@
   </div>
 
   <!-- everything under the navbar -->
+
+  <!-- Coupon Input -->
   <div class="container-fluid bg" id="underNav">
     <div class="container">
         <div class="row">
@@ -376,6 +378,19 @@
                     </div>
                   </div>
                 </div>
+
+
+              <!-- added body for coupon input-->
+                <div class="card-footer"></div>
+                <div class="card-body" id="couponSection">
+                  <div class="form-group">
+                    <label for="inputCoupon">Coupons</label>
+                    <input type="text" class="form-control" id="inputCoupon" placeholder="Enter Promo Code"></input>
+                    <button type="submit" onClick="couponClick()" class="btn btn-primary" id="btnCoupon" data-dismiss="modal">Enter</button>
+                  </div>
+                </div>
+
+
 
               </div>
             </div>

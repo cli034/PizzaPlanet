@@ -51,6 +51,8 @@ var prices = {
 var orderSummary = [];
 var orderPrices = [];
 var fromPizza = false;
+var hasCoupon, thanksgivingCoupon, xmasCoupon = false;
+
 
 function addItemToMenu(){
   var user = firebase.auth().currentUser;
@@ -89,18 +91,18 @@ function addItemToMenu(){
 // Apply at checkout
 // Reset after checkout
 
-var hasCoupon = false;
-
 function couponClick() {
-  if(Boolean(hasCoupon)) {
+  if(hasCoupon) {
     window.alert("You already have a coupon! Limit 1 coupon per order.");
   }
   else if(inputCoupon.value == "THNKSGVN2017") {
     hasCoupon = true;
+    thanksgivingCoupon = true;
     window.alert("Congratulations! You have a free order of 6-piece wings!");
   }
   else if(inputCoupon.value == "XMAS2017") {
     hasCoupon = true;
+    xmasCoupon = true;
     window.alert("Congratulations! You have 25% off at checkout!");
   }
   else if(inputCoupon.value == "BOGOPZZA") {
@@ -416,8 +418,10 @@ $(document).ready(function() {
   function calcTotalSum(){
     var total = 0;
     for(var i = 0; i < orderPrices.length; i++){
-      if((i % 2) == 0)
+      if((i % 2) == 0) {
         total += Number(orderPrices[i].replace("$", "")); //get rid of $
+      }
+      // TODO: Coupon deduction
     }
     $("#totalCost").html("$" + total.toString());
     //console.log(total);

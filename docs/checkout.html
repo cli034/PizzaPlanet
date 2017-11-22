@@ -228,8 +228,8 @@
                       </div>
 
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="Custom Pizza" id="customPizzaCheck">
-                        Custom Pizza
+                        <input class="form-check-input" type="checkbox" value="Custom Pizza" id="customPizzaCheck" disabled>
+                        Custom Piza
                       </label>
 
                     </div>
@@ -428,13 +428,26 @@
 
               </div>
             </div>
+
+
             <div class="col-lg-3">
+              <div class="card" id="recentOrderBox">
+                <div class="card-header">
+                  <h4 class="card-tile" style="color:black">Recent Order</h4>
+                </div>
+                <div class="card-body">
+                </div>
+                <div class="card-footer" id="total">
+                </div>
+              </div>
+
               <div class="card" id="summaryBox">
                 <div class="card-header">
                   <h4 class="card-tile" style="color:black">Order Summary</h4>
                 </div>
                 <div class="card-body">
                   <div class="row">
+
                     <div class="col-sm-6">
                       <div class="d-inline-block">
                         <span class="card-text" id="orderSumItems"></span>
@@ -451,8 +464,10 @@
                   <span>Total: </span>
                   <span id="totalCost"></span>
                   <br \>
-                  <a href="#" class="btn btn-primary">Place Your Order</a>
+                  <a href="#" onclick="addItemToMenu()" class="btn btn-primary">Place Your Order</a>
+                </div>
               </div>
+              <br />
             </div>
         </div>
     </div>

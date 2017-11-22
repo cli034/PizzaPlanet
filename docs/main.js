@@ -52,6 +52,11 @@ var orderSummary = [];
 var orderPrices = [];
 var fromPizza = false;
 
+function getEmail() {
+  var user = firebase.auth().currentUser;
+  $("#currEmail").text(user.email);
+}
+
 function addItemToMenu(){
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -734,9 +739,13 @@ $(document).ready(function() {
       changeOrderSum();
     });
   }
+
   $('#wingsContainer input').on('change', function() {
     checkMark();
   });
+
+
+
 
   function displayRecent() {
     var user = firebase.auth().currentUser;
@@ -752,13 +761,17 @@ $(document).ready(function() {
           var userInfo = snapshot.child(key).val();
 
           if (userInfo.email == user.email) {
-            if(orderSummary.length == 0)  
+            if(orderSummary.length == 0)
               $("#recentOrderBox").html("Select Items To Begin");
             else
               $("#recentOrderBox").html(orderSummary);
           }
+        }
+      });
+    }
   }
 
+  getEmail();
   customPizzaFunction();
   checkMark();
   changeOrderSum();

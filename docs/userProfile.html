@@ -161,8 +161,9 @@
         </div>
         <div class="modal-body">
           <p>
-            You are about to <u>permanently</u> delete your account. Once deleted,
-            there is no going back. Are you sure you want to <b><font color=red>delete</font></b>?
+            You are about to permanently delete your account. Once deleted,
+            there is no going back.<br \>
+            Are you sure you want to <b><font color=red>delete</font></b> <u><span id="currEmail"><span></u>?
           </p>
         </div>
         <div class="modal-footer">
@@ -238,13 +239,17 @@
                   </div>
                   <button type="button" class="btn btn-info" id="updateAddrBtn" onclick="updateAddress()">Update Address</button>
                 </div>
+                <!-- <div class="col-lg-4"> -->
+                  <!-- <button onclick="getEmail()">Who Am I?</button> -->
+                  <!-- <p>Current User: <span id="curEmail"></span></p> -->
+                <!-- </div> -->
               </div>
             </div>
             <div class="card-footer" style="margin-top:50px;">
               <h4 style="color:red;">Delete Account</h4>
               <hr>
               <p>Permanently delete your account</p>
-              <button type="button" class="btn btn-danger" id="btnDelete" data-toggle="modal" data-target="#warningModal">Delete Account</button>
+              <button type="button" class="btn btn-danger" id="btnDelete" data-toggle="modal" data-target="#warningModal" onclick="getEmail()" >Delete Account</button>
             </div>
           </div>
         </div>

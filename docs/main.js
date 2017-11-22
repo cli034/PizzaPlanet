@@ -50,7 +50,7 @@ var prices = {
 };
 var orderSummary = [];
 var orderPrices = [];
-var fromPizza = false;
+
 var hasCoupon, thanksgivingCoupon, xmasCoupon = false;
 
 function getEmail() {
@@ -486,7 +486,6 @@ function customPizzaFunction(){
       orderPrices.push("<br \>");
     }
     window.name = "";
-
   }
   if(window.name.includes("Lemonade")){
     $("#lemonadeCheck").prop("disabled", true);
@@ -499,7 +498,6 @@ function customPizzaFunction(){
       orderPrices.push("<br \>");
     }
     window.name = "";
-
   }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);
@@ -511,7 +509,6 @@ function customPizzaFunction(){
     }
     window.name = "";
   }
-  fromPizza = true;
 }
 
 function calcTotalSum(){
@@ -744,7 +741,6 @@ $(document).ready(function() {
           orderPrices.push("$" + prices["Supreme Pizza"].toString());
           orderPrices.push("<br \>");
         } else{
-          if(!fromPizza)
             orderPrices[orderSummary.indexOf("Supreme Pizza")] = "$" + (prices["Supreme Pizza"] + Number($('input[name=pizzaRadioOptions1]:checked', '#pizzaRadio1').val())).toString();
         }
       }
@@ -756,7 +752,6 @@ $(document).ready(function() {
           orderPrices.push("$" + prices["Pepperoni Pizza"].toString());
           orderPrices.push("<br \>");
         } else{
-          if(!fromPizza)
             orderPrices[orderSummary.indexOf("Pepperoni Pizza")] = "$" + (prices["Pepperoni Pizza"] + Number($('input[name=pizzaRadioOptions2]:checked', '#pizzaRadio2').val())).toString();
         }
       }
@@ -768,7 +763,6 @@ $(document).ready(function() {
           orderPrices.push("$" + prices["Cheese Pizza"].toString());
           orderPrices.push("<br \>");
         }  else{
-          if(!fromPizza)
             orderPrices[orderSummary.indexOf("Cheese Pizza")] = "$" + (prices["Cheese Pizza"] + Number($('input[name=pizzaRadioOptions3]:checked', '#pizzaRadio3').val())).toString();
         }
       }

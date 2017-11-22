@@ -511,6 +511,49 @@ function customPizzaFunction(){
   fromPizza = true;
 }
 
+function calcTotalSum(){
+  var total = 0;
+  for(var i = 0; i < orderPrices.length; i++){
+    if((i % 2) == 0) {
+      total += Number(orderPrices[i].replace("$", "")); //get rid of $
+    }
+  }
+  if(xmasCoupon == true){
+    if((total / 4) < 10)
+      total = (total / 4).toPrecision(3);
+    else if((total / 4) > 10)
+      total = (total / 4).toPrecision(4);
+  }
+  if(thanksgivingCoupon && (orderSummary.includes("Buffalo Wings") || orderSummary.includes("Hot Wings") || orderSummary.includes("Lemon Pepper Wings")))
+    total -= 3;
+  $("#totalCost").html("$" + total.toString());
+}
+
+function couponClick() {
+  if(hasCoupon) {
+    window.alert("You already have a coupon! Limit 1 coupon per order.");
+  }
+  else if(inputCoupon.value == "THNKSGVN2017") {
+    hasCoupon = true;
+    thanksgivingCoupon = true;
+    window.alert("Congratulations! You have a 3 dollars off on wings!");
+    calcTotalSum();
+  }
+  else if(inputCoupon.value == "XMAS2017") {
+    hasCoupon = true;
+    xmasCoupon = true;
+    window.alert("Congratulations! You have 25% off at checkout!");
+    calcTotalSum();
+  }
+  else if(inputCoupon.value == "VETERAN2017") {
+    window.alert("Sorry! This coupon has expired.");
+  }
+  else {
+    window.alert("Invalid Promo Code.");
+  }
+  calcTotalSum();
+}
+
 $(document).ready(function() {
   //---------------------------------------------------------------------------
   // javascript for modals
@@ -539,45 +582,6 @@ $(document).ready(function() {
   // --------------------------------------------------------------------------
   // Javascript for checkout page
   //---------------------------------------------------------------------------
-  function calcTotalSum(){
-    var total = 0;
-    for(var i = 0; i < orderPrices.length; i++){
-      if((i % 2) == 0) {
-        total += Number(orderPrices[i].replace("$", "")); //get rid of $
-      }
-    }
-    if(xmasCoupon == true){
-      total = total / 4;
-    }
-    if(thanksgivingCoupon && orderSummary.includes("Buffalo Wings") && orderSummary.includes("Hot Wings") && orderSummary.includes("Lemon Pepper Wings"))
-      total -= 3;
-    $("#totalCost").html("$" + total.toString());
-  }
-
-  function couponClick() {
-    if(hasCoupon) {
-      window.alert("You already have a coupon! Limit 1 coupon per order.");
-    }
-    else if(inputCoupon.value == "THNKSGVN2017") {
-      hasCoupon = true;
-      thanksgivingCoupon = true;
-      window.alert("Congratulations! You have a 3 dollars off on wings!");
-      calcTotalSum();
-    }
-    else if(inputCoupon.value == "XMAS2017") {
-      hasCoupon = true;
-      xmasCoupon = true;
-      window.alert("Congratulations! You have 25% off at checkout!");
-      calcTotalSum();
-    }
-    else if(inputCoupon.value == "VETERAN2017") {
-      window.alert("Sorry! This coupon has expired.");
-    }
-    else {
-      window.alert("Invalid Promo Code.");
-    }
-    calcTotalSum();
-  }
 
   // THERE IS PROBABLY A BETTER WAY OF DOING THIS
   // update summary box

@@ -69,9 +69,9 @@ function addItemToMenu(){
 
           var postData = [];
 
-          // for (var i = 0; i < orderSummary; i = i + 2) {
-          //   postData.push(orderSummary.at[i]);
-          // }
+          for (var i = 0; i < orderSummary.length; i = i + 2) {
+            postData.push(orderSummary[i]);
+          }
 
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;
@@ -119,7 +119,7 @@ function registerClick() {
       city: inputCity.value,
       state: inputState.value,
       zip: inputZip.value,
-      order: ''
+      order: '0'
     });
     window.alert("You have been registered successfully!");
   }
@@ -559,7 +559,6 @@ $(document).ready(function() {
       }
     }
 
-
     // display items
     //console.log(orderSummary);
     if(orderSummary.length == 0)
@@ -729,6 +728,7 @@ $(document).ready(function() {
           orderPrices.push("$" + prices["Lemonade"].toString());
           orderPrices.push("<br \>");
         }
+
       }
 
       changeOrderSum();
@@ -737,6 +737,27 @@ $(document).ready(function() {
   $('#wingsContainer input').on('change', function() {
     checkMark();
   });
+
+  function displayRecent() {
+    var user = firebase.auth().currentUser;
+    var database = firebase.database();
+
+
+    var customerRef = database.ref('Customers');
+
+    if (user != null) {
+
+      customerRef.once('value').then(function(snapshot) {
+        for (var key in snapshot.val()){
+          var userInfo = snapshot.child(key).val();
+
+          if (userInfo.email == user.email) {
+            if(orderSummary.length == 0)  
+              $("#recentOrderBox").html("Select Items To Begin");
+            else
+              $("#recentOrderBox").html(orderSummary);
+          }
+  }
 
   customPizzaFunction();
   checkMark();

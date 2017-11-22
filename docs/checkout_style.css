@@ -52,15 +52,16 @@ body, html{
   font-size: 28px;
 }
 
-#summaryBox{
-  width: 15%;
-  position: fixed;  /* follows you as you scroll */
-}
 
 #recentOrderBox{
-  margin-top: 15%;
   width: 15%;
   position: fixed;
+}
+
+#summaryBox{
+  margin-top: 10%;
+  width: 15%;
+  position: fixed;  /* follows you as you scroll */
 }
 
 #placeOrderBox{

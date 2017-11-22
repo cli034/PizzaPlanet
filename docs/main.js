@@ -69,9 +69,9 @@ function addItemToMenu(){
 
           var postData = [];
 
-          // for (var i = 0; i < orderSummary; i = i + 2) {
-          //   postData.push(orderSummary.at[i]);
-          // }
+          for (var i = 0; i < orderSummary.length; i = i + 2) {
+            postData.push(orderSummary[i]);
+          }
 
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;

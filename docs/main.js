@@ -334,6 +334,14 @@ function storeTraditional(){
   window.name = "Traditional" + flavor + total.toString();
 }
 
+function storeBoneless(){
+  var size = $('#size-boneless-wings option:selected').val();
+  var flavor = $('#type-boneless-wings option:selected').val();
+  var total = prices["Buffalo Wings"] + Number(size);
+
+  window.name = "Boneless" + flavor + total.toString();
+}
+
 function customPizzaFunction(){
   if(window.name.includes("Pepperoni")){
     $("#pepperoniPizzaCheck").prop("disabled", true);
@@ -385,9 +393,53 @@ function customPizzaFunction(){
     } else if(temp == "L"){
       $("#lemonWingCheck").prop("disabled", true);
       $("#lemonWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Lemon Pepper Wings")){
+        orderSummary.push("Lemon Pepper Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
     } else if(temp == "H"){
       $("#hotWingCheck").prop("disabled", true);
       $("#hotWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Hot Wings")){
+        orderSummary.push("Hot Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Boneless")){
+    var temp = window.name.slice(8,9);
+    if(temp == "B"){
+      $("#buffaloWingCheck").prop("disabled", true);
+      $("#buffaloWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Buffalo Wings")){
+        orderSummary.push("Buffalo Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "L"){
+      $("#lemonWingCheck").prop("disabled", true);
+      $("#lemonWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Lemon Pepper Wings")){
+        orderSummary.push("Lemon Pepper Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "H"){
+      $("#hotWingCheck").prop("disabled", true);
+      $("#hotWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Hot Wings")){
+        orderSummary.push("Hot Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
     }
     window.name = "";
   }

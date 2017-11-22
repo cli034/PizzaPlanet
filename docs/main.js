@@ -53,10 +53,9 @@ var orderPrices = [];
 var fromPizza = false;
 var hasCoupon, thanksgivingCoupon, xmasCoupon = false;
 
-
 function getEmail() {
-  var user = firebase.auth().currentUser;
-  $("#currEmail").text(user.email);
+   var user = firebase.auth().currentUser;
+   $("#currEmail").text(user.email);
 }
 
 function addItemToMenu(){
@@ -927,7 +926,6 @@ $(document).ready(function() {
     }
   }
 
-  getEmail();
   customPizzaFunction();
   checkMark();
   changeOrderSum();

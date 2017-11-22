@@ -50,13 +50,12 @@ var prices = {
 };
 var orderSummary = [];
 var orderPrices = [];
-
+var fromPizza = false;
 
 function addItemToMenu() {
   var user = firebase.auth().currentUser;
   var database = firebase.database();
   var customerRef = database.ref('Customers');
-
   if (user != null) {
 
     customerRef.once('value').then(function(snapshot) {
@@ -293,19 +292,76 @@ function updateAddress() {
         window.alert("Address update failed");
     });
   }
+
+function choosePepperoni(){
+  // get cost of pizza
+  var crustPrice = Number($('#crust-pepperoni-pizza option:selected').val());
+  var sizePrice = Number($('#size-pepperoni-pizza option:selected').val());
+  var total = prices["Pepperoni Pizza"] + crustPrice + sizePrice;
+  window.name = "Pepperoni" + total.toString();
+}
+
+function chooseCheese(){
+  // get cost of pizza
+  var crustPrice = Number($('#crust-cheese-pizza option:selected').val());
+  var sizePrice = Number($('#size-cheese-pizza option:selected').val());
+  var total = prices["Cheese Pizza"] + crustPrice + sizePrice;
+  window.name = "Cheese" + total.toString();
+}
+
+function chooseSupreme(){
+  var crustPrice = Number($('#crust-supreme--pizza option:selected').val());
+  var sizePrice = Number($('#size-supreme-pizza option:selected').val());
+  var total = prices["Supreme Pizza"] + crustPrice + sizePrice;
+  window.name = "Supreme" + total.toString();
 }
 
 function storeCustomPizza() {
-  var priceTest = 0;
+  var priceTest = prices["Custom Pizza"];
   priceTest += Number($('input[name=customSize]:checked', '#customSizeRadio').val());
   priceTest += Number($('input[name=customCrust]:checked', '#customCrustRadio').val());
   priceTest += document.querySelectorAll('input[type="checkbox"]:checked').length;
-  console.log(priceTest);
   // store price into window.name because easy way of transfering js variables
   window.name = priceTest.toString();
 }
 
 function customPizzaFunction(){
+  if(window.name.includes("Pepperoni")){
+    $("#pepperoniPizzaCheck").prop("disabled", true);
+    $("#pepperoniPizzaCheck").prop("checked", true);
+    var temp = window.name.slice(9);
+    if(!orderSummary.includes("Pepperoni Pizza")){
+      orderSummary.push("Pepperoni Pizza");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Cheese")){
+    $("#cheesePizzaCheck").prop("disabled", true);
+    $("#cheesePizzaCheck").prop("checked", true);
+    var temp = window.name.slice(6);
+    if(!orderSummary.includes("Cheese Pizza")){
+      orderSummary.push("Cheese Pizza");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Supreme")){
+    $("#supremePizzaCheck").prop("disabled", true);
+    $("#supremePizzaCheck").prop("checked", true);
+    var temp = window.name.slice(7);
+    if(!orderSummary.includes("Supreme Pizza")){
+      orderSummary.push("Supreme Pizza");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);
     if(!orderSummary.includes("Custom Pizza")){
@@ -314,7 +370,9 @@ function customPizzaFunction(){
       orderPrices.push("$" + window.name);
       orderPrices.push("<br \>");
     }
+    window.name = "";
   }
+  fromPizza = true;
 }
 
 $(document).ready(function() {
@@ -504,37 +562,39 @@ $(document).ready(function() {
   function checkMark(){
     $( "input" ).on( "click", function() {
       if(document.getElementById("supremePizzaCheck").checked){
-        // if no supreme pizza, then add it
-        $("#pizzaRadio1").removeAttr('hidden');
         if(!orderSummary.includes("Supreme Pizza")){
+          $("#pizzaRadio1").removeAttr('hidden');
           orderSummary.push("Supreme Pizza");
           orderSummary.push("<br \>");
           orderPrices.push("$" + prices["Supreme Pizza"].toString());
           orderPrices.push("<br \>");
         } else{
-          orderPrices[orderSummary.indexOf("Supreme Pizza")] = "$" + (prices["Supreme Pizza"] + Number($('input[name=pizzaRadioOptions1]:checked', '#pizzaRadio1').val())).toString();
+          if(!fromPizza)
+            orderPrices[orderSummary.indexOf("Supreme Pizza")] = "$" + (prices["Supreme Pizza"] + Number($('input[name=pizzaRadioOptions1]:checked', '#pizzaRadio1').val())).toString();
         }
       }
       if(document.getElementById("pepperoniPizzaCheck").checked){
-        $("#pizzaRadio2").removeAttr('hidden');
         if(!orderSummary.includes("Pepperoni Pizza")){
+          $("#pizzaRadio2").removeAttr('hidden');
           orderSummary.push("Pepperoni Pizza");
           orderSummary.push("<br \>");
           orderPrices.push("$" + prices["Pepperoni Pizza"].toString());
           orderPrices.push("<br \>");
         } else{
-          orderPrices[orderSummary.indexOf("Pepperoni Pizza")] = "$" + (prices["Pepperoni Pizza"] + Number($('input[name=pizzaRadioOptions2]:checked', '#pizzaRadio2').val())).toString();
+          if(!fromPizza)
+            orderPrices[orderSummary.indexOf("Pepperoni Pizza")] = "$" + (prices["Pepperoni Pizza"] + Number($('input[name=pizzaRadioOptions2]:checked', '#pizzaRadio2').val())).toString();
         }
       }
       if(document.getElementById("cheesePizzaCheck").checked){
-        $("#pizzaRadio3").removeAttr('hidden');
         if(!orderSummary.includes("Cheese Pizza")){
+          $("#pizzaRadio3").removeAttr('hidden');
           orderSummary.push("Cheese Pizza");
           orderSummary.push("<br \>");
           orderPrices.push("$" + prices["Cheese Pizza"].toString());
           orderPrices.push("<br \>");
         }  else{
-          orderPrices[orderSummary.indexOf("Cheese Pizza")] = "$" + (prices["Cheese Pizza"] + Number($('input[name=pizzaRadioOptions3]:checked', '#pizzaRadio3').val())).toString();
+          if(!fromPizza)
+            orderPrices[orderSummary.indexOf("Cheese Pizza")] = "$" + (prices["Cheese Pizza"] + Number($('input[name=pizzaRadioOptions3]:checked', '#pizzaRadio3').val())).toString();
         }
       }
       // probably gonna need to implement custom pizza differently

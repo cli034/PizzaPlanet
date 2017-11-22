@@ -155,18 +155,28 @@
             <img class="card-img-top" src="images/pepperoni_pizza.jpg" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title">Pepperoni Pizza</h4>
-              <select id="crust-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thick Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thin Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --></select>
-              <select id="size-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
-                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
-                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
-                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
-                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+              <select id="crust-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style="">
+                <option value="1" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                  Thick Crust Pizza
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
+                  Thin Crust Pizza
+                </option>
+              </select>
+              <select id="size-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="6" selected="selected">
+                  Large
+                </option>
+                <option value="3" class="drop_st ng-binding ng-scope">
+                  Medium
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope">
+                  Small
+                </option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="choosePepperoni()" type="Pepperoni">Order Now</a>
             </div>
           </div>
         </div>
@@ -175,18 +185,28 @@
             <img class="card-img-top" src="images/cheese_pizza.jpg" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title">Cheese Pizza</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thick Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thin Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --></select>
-              <select id="size-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
-                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
-                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
-                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
-                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="1" class="drop_st ng-binding ng-scope" selected>
+                  Thick Crust Pizza
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope">
+                  Thin Crust Pizza
+                </option>
+              </select>
+              <select id="size-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="6" class="drop_st ng-binding ng-scope" selected="selected">
+                  Large
+                </option>
+                <option value="3" class="drop_st ng-binding ng-scope">
+                  Medium
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope">
+                  Small
+                </option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="chooseCheese()">Order Now</a>
             </div>
           </div>
         </div>
@@ -198,18 +218,28 @@
             <img class="card-img-top" src="images/supreme_pizza.jpg" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title">Supreme Pizza</h4>
-              <select id="crust-meat--pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thick Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Thin Crust Pizza</option><!-- end ngRepeat: crust in item.crusts --></select>
-              <select id="size-meat-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.size" data-ng-init="selected.size=item.sizes[0].val=='L'?item.sizes[0].val:item.sizes[1].val;" data-ng-change="__update()" style=""><!-- ngRepeat: size in item.sizes -->
-                <option value="L" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes" selected="selected">
-                Large</option><!-- end ngRepeat: size in item.sizes --><option value="M" data-ng-selected="size.val == 'L'" class="drop_st ng-binding ng-scope" data-ng-bind-html="::size.text" data-ng-disabled="size.isDisabled" data-ng-repeat="size in item.sizes">
-                Medium</option><!-- end ngRepeat: size in item.sizes --><option value="P" da<!-- end ngRepeat: size in item.sizes -->
-                Small</option><!-- end ngRepeat: size in item.sizes --></select>
+              <select id="crust-supreme--pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="1" class="drop_st ng-binding ng-scope">
+                  Thick Crust Pizza
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope">
+                  Thin Crust Pizza
+                </option>
+              </select>
+              <select id="size-supreme-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="6" class="drop_st ng-binding ng-scope" selected>
+                  Large
+                </option>
+                <option value="3" class="drop_st ng-binding ng-scope">
+                  Medium
+                </option>
+                <option value="0" class="drop_st ng-binding ng-scope">
+                  Small
+                </option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="checkout.html" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="chooseSupreme()">Order Now</a>
             </div>
           </div>
         </div>

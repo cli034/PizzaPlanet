@@ -147,9 +147,9 @@
 
   <!-- Coupon Input -->
   <div class="container-fluid" id="underNav">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
+    <div class="container-fluid">
+        <div class="row" style="padding-left: auto;padding-right: auto;">
+            <div class="col-lg-6" id="left">
               <div class="card" id="placeOrderBox">
                 <div class="card-header">
                   <h3 class="card-title" style="color:black">Pick and Place Your Order</h3>
@@ -412,8 +412,6 @@
                     </div>
                   </div>
                 </div>
-
-
               <!-- added body for coupon input-->
                 <div class="card-footer"></div>
                 <div class="card-body" id="couponSection">
@@ -423,15 +421,9 @@
                     <button type="submit" onClick="couponClick()" class="btn btn-primary" id="btnCoupon" data-dismiss="modal">Enter</button>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
-
-
-            <div class="col-lg-3">
-
+            <div class="col-lg-3" id="middle">
                 <div class="card" id="summaryBox">
                 <div class="card-header">
                   <h4 class="card-tile" style="color:black">Order Summary</h4>
@@ -459,9 +451,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-3 text-center">
-
+            <div class="col-lg-3 text-center" id="right">
               <div class="card" id="recentOrderBox">
                 <div class="card-header">
                   <h4 class="card-tile" style="color:black">Recent Orders</h4>
@@ -470,10 +460,7 @@
                   <a href="#" id="recentOrderButton" onclick="displayRecent()" class="btn btn-primary">See Recent Order</a>
                   <p id="recentOrderText">  </p>
                 </div>
-                <div class="card-footer" id="total">
-                </div>
               </div>
-
             </div>
         </div>
     </div>

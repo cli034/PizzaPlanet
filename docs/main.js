@@ -63,15 +63,12 @@ function displayRecent() {
       for (var key in snapshot.val()){
         var userInfo = snapshot.child(key).val();
         var uEmail = userInfo.email.toLowerCase();
-
-
         if (uEmail == user.email) {
           for (var i = 0; i < userInfo.order.length; ++i) {
             orderArr.push(userInfo.order[i]);
             if (i != userInfo.order.length-1) {
               orderArr.push("<br \>");
             }
-
           }
           $("#recentOrderButton").prop("hidden", true);
           if(orderArr.length == 0)
@@ -82,13 +79,16 @@ function displayRecent() {
         }
       }
     });
+  } else {
+    $("#recentOrderButton").prop("hidden", true);
+    $("#recentOrderText").html("Login to see Recent Orders");
   }
   return orderArr;
 }
 
 function getEmail() {
   var user = firebase.auth().currentUser;
-  $("#curEmail").text(user.email);
+  $("#currEmail").text(user.email);
 }
 
 

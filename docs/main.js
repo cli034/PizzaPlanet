@@ -351,6 +351,27 @@ function storeBoneless(){
   window.name = "Boneless" + flavor + total.toString();
 }
 
+function storeCoke(){
+  var size = prices["Coca-Cola"] + Number($('#coca-cola-card option:selected').val());
+  window.name = "Coke" + size.toString();
+}
+function storeMountainDew(){
+  var size = prices["Mountain Dew"] + Number($('#mountain-dew-card option:selected').val());
+  window.name = "MountainDew" + size.toString();
+}
+function storeCrush(){
+  var size = prices["Crush"] + Number($('#crush-card option:selected').val());
+  window.name = "Crush" + size.toString();
+}
+function storeBrisk(){
+  var size = prices["Brisk"] + Number($('#brisk-card option:selected').val());
+  window.name = "Brisk" + size.toString();
+}
+function storeLemonade(){
+  var size = prices["Lemonade"] + Number($('#lemonade-card option:selected').val());
+  window.name = "Lemonade" + size.toString();
+}
+
 function customPizzaFunction(){
   if(window.name.includes("Pepperoni")){
     $("#pepperoniPizzaCheck").prop("disabled", true);
@@ -451,6 +472,69 @@ function customPizzaFunction(){
       }
     }
     window.name = "";
+  }
+  if(window.name.includes("Coke")){
+    $("#cokeCheck").prop("disabled", true);
+    $("#cokeCheck").prop("checked", true);
+    var temp = window.name.slice(4);
+    if(!orderSummary.includes("Coca-Cola")){
+      orderSummary.push("Coca-Cola");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("MountainDew")){
+    $("#mountainDewCheck").prop("disabled", true);
+    $("#mountainDewCheck").prop("checked", true);
+    var temp = window.name.slice(11);
+    if(!orderSummary.includes("Mountain Dew")){
+      orderSummary.push("Mountain Dew");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Crush")){
+    $("#crushCheck").prop("disabled", true);
+    $("#crushCheck").prop("checked", true);
+    var temp = window.name.slice(5);
+    if(!orderSummary.includes("Crush")){
+      orderSummary.push("Crush");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
+  }
+  if(window.name.includes("Brisk")){
+    $("#briskCheck").prop("disabled", true);
+    $("#briskCheck").prop("checked", true);
+    var temp = window.name.slice(5);
+    if(!orderSummary.includes("Brisk")){
+      orderSummary.push("Brisk");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
+  }
+  if(window.name.includes("Lemonade")){
+    $("#lemonadeCheck").prop("disabled", true);
+    $("#lemonadeCheck").prop("checked", true);
+    var temp = window.name.slice(8);
+    if(!orderSummary.includes("Lemonade")){
+      orderSummary.push("Lemonade");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
   }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);

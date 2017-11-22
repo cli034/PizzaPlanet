@@ -84,18 +84,27 @@ function addItemToMenu(){
 }
 
 // For coupons page
-// TODO: Limit 1 coupon per purchase
+// TODO: Limit 1 coupon per purchase, reset hasCoupon to false after purchase
 // Save coupon until checkout
 // Apply at checkout
+// Reset after checkout
+
+var hasCoupon = false;
 
 function couponClick() {
-  if(inputCoupon.value == "THNKSGVN2017") {
+  if(Boolean(hasCoupon)) {
+    window.alert("You already have a coupon! Limit 1 coupon per order.");
+  }
+  else if(inputCoupon.value == "THNKSGVN2017") {
+    hasCoupon = true;
     window.alert("Congratulations! You have a free order of 6-piece wings!");
   }
   else if(inputCoupon.value == "XMAS2017") {
+    hasCoupon = true;
     window.alert("Congratulations! You have 25% off at checkout!");
   }
   else if(inputCoupon.value == "BOGOPZZA") {
+    hasCoupon = true;
     window.alert("Congratulations! You have buy one, get one free small pizza!");
   }
   else if(inputCoupon.value == "VETERAN2017") {

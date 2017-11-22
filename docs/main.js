@@ -85,13 +85,6 @@ function addItemToMenu(){
   }
 }
 
-// For coupons page
-// TODO: Limit 1 coupon per purchase, reset hasCoupon to false after purchase
-// Save coupon until checkout
-// Apply at checkout
-// Reset after checkout
-
-
 //add to database
 function registerClick() {
   // Store data from Register Email to firebase
@@ -277,6 +270,7 @@ function updateAddress() {
     });
   }
 }
+
 function choosePepperoni(){
   // get cost of pizza
   var crustPrice = Number($('#crust-pepperoni-pizza option:selected').val());
@@ -319,7 +313,6 @@ function storeBoneless(){
 
   window.name = "Boneless" + flavor + total.toString();
 }
-
 function storeCoke(){
   var size = prices["Coca-Cola"] + Number($('#coca-cola-card option:selected').val());
   window.name = "Coke" + size.toString();

@@ -2,7 +2,7 @@ body, html{
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: grey;
+  background-color: #3CE6E8;
 
   font-family: 'Roboto', "Helvetica Neue",  Arial;
 }
@@ -58,7 +58,6 @@ body, html{
 }
 
 #recentOrderBox{
-  margin-top: 15%;
   width: 15%;
   position: fixed;
 }

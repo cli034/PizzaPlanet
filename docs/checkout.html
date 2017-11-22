@@ -226,7 +226,7 @@
                       </div>
 
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="Custom Pizza" id="customPizzaCheck" disabled>
+                        <input class="form-check-input" type="checkbox" value="Custom Pizza" id="customPizzaCheck">
                         Custom Pizza
                       </label>
 
@@ -244,6 +244,7 @@
                       </label>
                       <br \>
                       <div id="wingsRadio1" hidden>
+                        <form id="myForm">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
                             <input class="form-check-input" type="radio" name="wingsRadioOptions1" value="0" checked> 6 Wings
@@ -259,20 +260,8 @@
                             <input class="form-check-input" type="radio" name="wingsRadioOptions1" value="18"> 24 Wings
                           </label>
                         </div>
+                        </form>
                       </div>
-                      <div id="wingsTypeRadio1" hidden>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions1" value="0" checked> Boneless
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions1" value="1"> Traditional
-                          </label>
-                        </div>
-                      </div>
-
 
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="Lemon Pepper Wings" id="lemonWingCheck">
@@ -296,18 +285,6 @@
                           </label>
                         </div>
                       </div>
-                      <div id="wingsTypeRadio2" hidden>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions2" value="0" checked> Boneless
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions2" value="1"> Traditional
-                          </label>
-                        </div>
-                      </div>
 
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="Original Hot" id="hotWingCheck">
@@ -328,18 +305,6 @@
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
                             <input class="form-check-input" type="radio" name="wingsRadioOptions3" value="18"> 24 Wings
-                          </label>
-                        </div>
-                      </div>
-                      <div id="wingsTypeRadio3" hidden>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions3" value="0" checked> Boneless
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="wingsTypeRadioOptions3" value="1"> Traditional
                           </label>
                         </div>
                       </div>
@@ -437,7 +402,7 @@
                   <span>Total: </span>
                   <span id="totalCost"></span>
                   <br \>
-                  <a href="#" onclick="addItemToMenu()" class="btn btn-primary">Place Your Order</a>
+                  <a href="#" class="btn btn-primary">Place Your Order</a>
                 </div>
               </div>
               <div class="card" id="recentOrderBox">

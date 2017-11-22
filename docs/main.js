@@ -451,6 +451,7 @@ $(document).ready(function() {
     }
     if(!document.getElementById("buffaloWingCheck").checked){
       $("#wingsRadio1").attr('hidden', 'true');
+      $("#wingsTypeRadio1").attr('hidden', 'true');
       var index = orderSummary.indexOf("Buffalo Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -459,6 +460,7 @@ $(document).ready(function() {
     }
     if(!document.getElementById("lemonWingCheck").checked){
       $("#wingsRadio2").attr('hidden', 'true');
+      $("#wingsTypeRadio2").attr('hidden', 'true');
       var index = orderSummary.indexOf("Lemon Pepper Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -467,6 +469,7 @@ $(document).ready(function() {
     }
     if(!document.getElementById("hotWingCheck").checked){
       $("#wingsRadio3").attr('hidden', 'true');
+      $("#wingsTypeRadio3").attr('hidden', 'true');
       var index = orderSummary.indexOf("Hot Wings");
       if(index > -1){
         orderSummary.splice(index, 2);
@@ -600,36 +603,39 @@ $(document).ready(function() {
       }
       // probably gonna need to implement custom pizza differently
       if(document.getElementById("buffaloWingCheck").checked){
-        $("#wingsRadio1").removeAttr('hidden');
         if(!orderSummary.includes("Buffalo Wings")){
+          $("#wingsRadio1").removeAttr('hidden');
+          $("#wingsTypeRadio1").removeAttr('hidden');
           orderSummary.push("Buffalo Wings");
           orderSummary.push("<br \>");
           orderPrices.push("$" + (prices["Buffalo Wings"] + Number($('input[name=wingsRadioOptions1]:checked', '#wingsRadio1').val())).toString());
           orderPrices.push("<br \>");
         } else{
-          orderPrices[orderSummary.indexOf("Buffalo Wings")] = "$" + (prices["Buffalo Wings"] + Number($('input[name=wingsRadioOptions1]:checked', '#wingsRadio1').val())).toString();
+          orderPrices[orderSummary.indexOf("Buffalo Wings")] = "$" + (prices["Buffalo Wings"] + Number($('input[name=wingsRadioOptions1]:checked', '#wingsRadio1').val()) + Number($('input[name=wingsTypeRadioOptions1]:checked', '#wingsTypeRadio1').val()) ).toString()
         }
       }
       if(document.getElementById("lemonWingCheck").checked){
-        $("#wingsRadio2").removeAttr('hidden');
         if(!orderSummary.includes("Lemon Pepper Wings")){
+          $("#wingsRadio2").removeAttr('hidden')
+          $("#wingsTypeRadio2").removeAttr('hidden');
           orderSummary.push("Lemon Pepper Wings");
           orderSummary.push("<br \>");
           orderPrices.push("$" + (prices["Lemon Pepper Wings"] + Number($('input[name=wingsRadioOptions2]:checked', '#wingsRadio2').val())).toString());
           orderPrices.push("<br \>");
         } else{
-          orderPrices[orderSummary.indexOf("Lemon Pepper Wings")] = "$" + (prices["Lemon Pepper Wings"] + Number($('input[name=wingsRadioOptions2]:checked', '#wingsRadio2').val())).toString();
+          orderPrices[orderSummary.indexOf("Lemon Pepper Wings")] = "$" + (prices["Lemon Pepper Wings"] + Number($('input[name=wingsRadioOptions2]:checked', '#wingsRadio2').val()) + Number($('input[name=wingsTypeRadioOptions2]:checked', '#wingsTypeRadio2').val()) ).toString();
         }
       }
       if(document.getElementById("hotWingCheck").checked){
-        $("#wingsRadio3").removeAttr('hidden');
         if(!orderSummary.includes("Hot Wings")){
+          $("#wingsRadio3").removeAttr('hidden');
+          $("#wingsTypeRadio3").removeAttr('hidden');
           orderSummary.push("Hot Wings");
           orderSummary.push("<br \>");
           orderPrices.push("$" + (prices["Hot Wings"] + Number($('input[name=wingsRadioOptions3]:checked', '#wingsRadio3').val())).toString());
           orderPrices.push("<br \>");
         } else{
-          orderPrices[orderSummary.indexOf("Hot Wings")] = "$" + (prices["Hot Wings"] + Number($('input[name=wingsRadioOptions3]:checked', '#wingsRadio3').val())).toString();
+          orderPrices[orderSummary.indexOf("Hot Wings")] = "$" + (prices["Hot Wings"] + Number($('input[name=wingsRadioOptions3]:checked', '#wingsRadio3').val()) + Number($('input[name=wingsTypeRadioOptions3]:checked', '#wingsTypeRadio3').val()) ).toString();
         }
       }
       if(document.getElementById("breadStickCheck").checked){

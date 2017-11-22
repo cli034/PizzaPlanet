@@ -50,21 +50,53 @@ var prices = {
 };
 var orderSummary = [];
 var orderPrices = [];
+var orderArr = [];
 var fromPizza = false;
 var hasCoupon, thanksgivingCoupon, xmasCoupon = false;
 
+function displayRecent() {
+  var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
+  if (user != null) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()){
+        var userInfo = snapshot.child(key).val();
+        var uEmail = userInfo.email.toLowerCase();
+
+
+        if (uEmail == user.email) {
+          for (var i = 0; i < userInfo.order.length; ++i) {
+            orderArr.push(userInfo.order[i]);
+            if (i != userInfo.order.length-1) {
+              orderArr.push("<br \>");
+            }
+
+          }
+          $("#recentOrderButton").prop("hidden", true);
+          if(orderArr.length == 0)
+            $("#recentOrderText").html("No Recent Orders");
+          else
+            $("#recentOrderText").html("Recent Order:");
+            $("#recentOrderText").html(orderArr);
+        }
+      }
+    });
+  }
+  return orderArr;
+}
 
 function getEmail() {
   var user = firebase.auth().currentUser;
-  $("#currEmail").text(user.email);
+  $("#curEmail").text(user.email);
 }
+
 
 function addItemToMenu(){
   var user = firebase.auth().currentUser;
   var database = firebase.database();
   var customerRef = database.ref('Customers');
   if (user != null) {
-
     customerRef.once('value').then(function(snapshot) {
       for (var key in snapshot.val()){
         var userInfo = snapshot.child(key).val();
@@ -589,6 +621,7 @@ $(document).ready(function() {
 
   // THERE IS PROBABLY A BETTER WAY OF DOING THIS
   // update summary box
+
   function changeOrderSum(){
     if(!(document.getElementById("supremePizzaCheck").checked)){
       $("#pizzaRadio1").attr('hidden', 'true');
@@ -901,35 +934,9 @@ $(document).ready(function() {
   });
 
 
-
-
-  function displayRecent() {
-    var user = firebase.auth().currentUser;
-    var database = firebase.database();
-
-
-    var customerRef = database.ref('Customers');
-
-    if (user != null) {
-
-      customerRef.once('value').then(function(snapshot) {
-        for (var key in snapshot.val()){
-          var userInfo = snapshot.child(key).val();
-
-          if (userInfo.email == user.email) {
-            if(orderSummary.length == 0)
-              $("#recentOrderBox").html("Select Items To Begin");
-            else
-              $("#recentOrderBox").html(orderSummary);
-          }
-        }
-      });
-    }
-  }
-
-  getEmail();
   customPizzaFunction();
   checkMark();
   changeOrderSum();
+
   //---------------------------END----------------------------------------------
 });

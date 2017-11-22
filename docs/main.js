@@ -326,6 +326,14 @@ function storeCustomPizza() {
   window.name = priceTest.toString();
 }
 
+function storeTraditional(){
+  var size = $('#size-trad-wings option:selected').val();
+  var flavor = $('#type-trad-wings option:selected').val();
+
+  window.name = "Traditonal" + size + flavor;
+  window.alert(window.name);
+}
+
 function customPizzaFunction(){
   if(window.name.includes("Pepperoni")){
     $("#pepperoniPizzaCheck").prop("disabled", true);
@@ -362,6 +370,10 @@ function customPizzaFunction(){
       orderPrices.push("<br \>");
     }
     window.name = "";
+  }
+  if(window.name.includes("Traditional")){
+    $("#supremePizzaCheck").prop("disabled", true);
+    $("#supremePizzaCheck").prop("checked", true);
   }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);

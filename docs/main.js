@@ -232,13 +232,12 @@ function deleteAccount() {
           customerRef.child(key).remove();
         }
       }
-    });
-
-    user.delete().then(function() {
-      window.alert("Account deleted");
-      location.href = "index.html";
-    }).catch(function(error) {
-      window.alert("Delete Error: Try again");
+      user.delete().then(function() {
+        window.alert("Account deleted");
+        location.href = "index.html";
+      }).catch(function(error) {
+        window.alert("Delete Error: Try again");
+      });
     });
   }
 }

@@ -40,7 +40,7 @@
           </div>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Deals <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="coupons.html">Coupons <span class="sr-only">(current)</span></a>
         </li>
       </ul>
 
@@ -52,7 +52,6 @@
     </div>
   </nav>
 
-  <!-- TODO: modal backend -->
   <!-- Popup to sign in -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
     <div class="modal-dialog" role="form">
@@ -156,13 +155,13 @@
             <img class="card-img-top" src="images/coca-cola.jpg" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title">Coca-Cola</h4>
-              <select id="crust-pepperoni-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="coca-cola-card" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="0" class="drop_st ng-binding ng-scope">Bottle (18 fl oz.)</option>
+                <option value="2" class="drop_st ng-binding ng-scope">Two Liter (2 Liters)</option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="storeCoke()">Order Now</a>
             </div>
           </div>
         </div>
@@ -170,14 +169,14 @@
           <div class="card" id="drinkCard">
             <img class="card-img-top" src="images/pepsi.jpg" alt="Card image cap">
             <div class="card-body">
-              <h4 class="card-title">Pepsi</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <h4 class="card-title">Mountain Dew</h4>
+              <select id="mountain-dew-card" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="0" class="drop_st ng-binding ng-scope">Bottle (18 fl oz.)</option>
+                <option value="2" class="drop_st ng-binding ng-scope">Two Liter (2 Liters)</option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="storeMountainDew()">Order Now</a>
             </div>
           </div>
         </div>
@@ -185,14 +184,14 @@
           <div class="card" id="drinkCard">
             <img class="card-img-top" src="images/rootbeer.jpg" alt="Card image cap">
             <div class="card-body">
-              <h4 class="card-title">Root Beer</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <h4 class="card-title">Crush</h4>
+              <select id="crush-card" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="0" class="drop_st ng-binding ng-scope">Bottle (18 fl oz.)</option>
+                <option value="2" class="drop_st ng-binding ng-scope">Two Liter (2 Liters)</option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="storeCrush()">Order Now</a>
             </div>
           </div>
         </div>
@@ -200,14 +199,14 @@
           <div class="card" id="drinkCard">
             <img class="card-img-top" src="images/sprite.jpg" alt="Card image cap">
             <div class="card-body">
-              <h4 class="card-title">Sprite</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <h4 class="card-title">Brisk</h4>
+              <select id="brisk-card" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="0" class="drop_st ng-binding ng-scope">Bottle (18 fl oz.)</option>
+                <option value="2" class="drop_st ng-binding ng-scope">Two Liter (2 Liters)</option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="storeBrisk()">Order Now</a>
             </div>
           </div>
         </div>
@@ -215,36 +214,19 @@
           <div class="card" id="drinkCard">
             <img class="card-img-top" src="images/dr-pepper.jpg" alt="Card image cap">
             <div class="card-body">
-              <h4 class="card-title">Dr. Pepper</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="card" id="drinkCard">
-            <img class="card-img-top" src="images/lemonade.jpg" alt="Card image cap">
-            <div class="card-body">
               <h4 class="card-title">Lemonade</h4>
-              <select id="crust-cheese-pizza" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" data-ng-model="selected.crust" data-ng-init="selected.crust=firstNonDisabled(item.crusts);" data-ng-change="__update()" style=""><!-- ngRepeat: crust in item.crusts -->
-                <option value="P" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Bottle (18 fl oz.)</option><!-- end ngRepeat: crust in item.crusts --><option value="H" class="drop_st ng-binding ng-scope" data-ng-bind-html="::crust.text" data-ng-disabled="crust.isDisabled" data-ng-repeat="crust in item.crusts">
-                Two Liter (2 Liters)</option><!-- end ngRepeat: crust in item.crusts --></select>
+              <select id="lemonade-card" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                <option value="0" class="drop_st ng-binding ng-scope">Bottle (18 fl oz.)</option>
+                <option value="2" class="drop_st ng-binding ng-scope">Two Liter (2 Liters)</option>
+              </select>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Order Now</a>
+              <a href="checkout.html" class="btn btn-primary" onclick="storeLemonade()">Order Now</a>
             </div>
           </div>
         </div>
-
       </div>
-  </div>
-  </div>
+    </div>
 
   <!-- Scripts -->
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->

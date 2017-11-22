@@ -51,6 +51,8 @@ var prices = {
 var orderSummary = [];
 var orderPrices = [];
 var fromPizza = false;
+var hasCoupon, thanksgivingCoupon, xmasCoupon = false;
+
 
 function getEmail() {
   var user = firebase.auth().currentUser;
@@ -85,29 +87,6 @@ function addItemToMenu(){
         }
       }
     });
-  }
-}
-
-// For coupons page
-// TODO: Limit 1 coupon per purchase
-// Save coupon until checkout
-// Apply at checkout
-
-function couponClick() {
-  if(inputCoupon.value == "THNKSGVN2017") {
-    window.alert("Congratulations! You have a free order of 6-piece wings!");
-  }
-  else if(inputCoupon.value == "XMAS2017") {
-    window.alert("Congratulations! You have 25% off at checkout!");
-  }
-  else if(inputCoupon.value == "BOGOPZZA") {
-    window.alert("Congratulations! You have buy one, get one free small pizza!");
-  }
-  else if(inputCoupon.value == "VETERAN2017") {
-    window.alert("Sorry! This coupon has expired.");
-  }
-  else {
-    window.alert("Invalid Promo Code.");
   }
 }
 
@@ -242,7 +221,6 @@ function changePassword() {
 
   }
 }
-
 function deleteAccount() {
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -259,17 +237,15 @@ function deleteAccount() {
           customerRef.child(key).remove();
         }
       }
-    });
-
-    user.delete().then(function() {
-      window.alert("Account deleted");
-      location.href = "index.html";
-    }).catch(function(error) {
-      window.alert("Delete Error: Try again");
+      user.delete().then(function() {
+        window.alert("Account deleted");
+        location.href = "index.html";
+      }).catch(function(error) {
+        window.alert("Delete Error: Try again");
+      });
     });
   }
 }
-
 function updateAddress() {
   var user = firebase.auth().currentUser;
   var database = firebase.database();
@@ -306,7 +282,6 @@ function choosePepperoni(){
   var total = prices["Pepperoni Pizza"] + crustPrice + sizePrice;
   window.name = "Pepperoni" + total.toString();
 }
-
 function chooseCheese(){
   // get cost of pizza
   var crustPrice = Number($('#crust-cheese-pizza option:selected').val());
@@ -314,14 +289,12 @@ function chooseCheese(){
   var total = prices["Cheese Pizza"] + crustPrice + sizePrice;
   window.name = "Cheese" + total.toString();
 }
-
 function chooseSupreme(){
   var crustPrice = Number($('#crust-supreme--pizza option:selected').val());
   var sizePrice = Number($('#size-supreme-pizza option:selected').val());
   var total = prices["Supreme Pizza"] + crustPrice + sizePrice;
   window.name = "Supreme" + total.toString();
 }
-
 function storeCustomPizza() {
   var priceTest = prices["Custom Pizza"];
   priceTest += Number($('input[name=customSize]:checked', '#customSizeRadio').val());
@@ -330,13 +303,39 @@ function storeCustomPizza() {
   // store price into window.name because easy way of transfering js variables
   window.name = priceTest.toString();
 }
-
 function storeTraditional(){
   var size = $('#size-trad-wings option:selected').val();
   var flavor = $('#type-trad-wings option:selected').val();
+  var total = prices["Buffalo Wings"] + Number(size) + 1;
 
-  window.name = "Traditonal" + size + flavor;
-  window.alert(window.name);
+  window.name = "Traditional" + flavor + total.toString();
+}
+function storeBoneless(){
+  var size = $('#size-boneless-wings option:selected').val();
+  var flavor = $('#type-boneless-wings option:selected').val();
+  var total = prices["Buffalo Wings"] + Number(size);
+
+  window.name = "Boneless" + flavor + total.toString();
+}
+function storeCoke(){
+  var size = prices["Coca-Cola"] + Number($('#coca-cola-card option:selected').val());
+  window.name = "Coke" + size.toString();
+}
+function storeMountainDew(){
+  var size = prices["Mountain Dew"] + Number($('#mountain-dew-card option:selected').val());
+  window.name = "MountainDew" + size.toString();
+}
+function storeCrush(){
+  var size = prices["Crush"] + Number($('#crush-card option:selected').val());
+  window.name = "Crush" + size.toString();
+}
+function storeBrisk(){
+  var size = prices["Brisk"] + Number($('#brisk-card option:selected').val());
+  window.name = "Brisk" + size.toString();
+}
+function storeLemonade(){
+  var size = prices["Lemonade"] + Number($('#lemonade-card option:selected').val());
+  window.name = "Lemonade" + size.toString();
 }
 
 function customPizzaFunction(){
@@ -377,8 +376,131 @@ function customPizzaFunction(){
     window.name = "";
   }
   if(window.name.includes("Traditional")){
-    $("#supremePizzaCheck").prop("disabled", true);
-    $("#supremePizzaCheck").prop("checked", true);
+    var temp = window.name.slice(11,12);
+    if(temp == "B"){
+      $("#buffaloWingCheck").prop("disabled", true);
+      $("#buffaloWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Buffalo Wings")){
+        orderSummary.push("Buffalo Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "L"){
+      $("#lemonWingCheck").prop("disabled", true);
+      $("#lemonWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Lemon Pepper Wings")){
+        orderSummary.push("Lemon Pepper Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "H"){
+      $("#hotWingCheck").prop("disabled", true);
+      $("#hotWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Hot Wings")){
+        orderSummary.push("Hot Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Boneless")){
+    var temp = window.name.slice(8,9);
+    if(temp == "B"){
+      $("#buffaloWingCheck").prop("disabled", true);
+      $("#buffaloWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Buffalo Wings")){
+        orderSummary.push("Buffalo Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "L"){
+      $("#lemonWingCheck").prop("disabled", true);
+      $("#lemonWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Lemon Pepper Wings")){
+        orderSummary.push("Lemon Pepper Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "H"){
+      $("#hotWingCheck").prop("disabled", true);
+      $("#hotWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Hot Wings")){
+        orderSummary.push("Hot Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(9));
+        orderPrices.push("<br \>");
+      }
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Coke")){
+    $("#cokeCheck").prop("disabled", true);
+    $("#cokeCheck").prop("checked", true);
+    var temp = window.name.slice(4);
+    if(!orderSummary.includes("Coca-Cola")){
+      orderSummary.push("Coca-Cola");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("MountainDew")){
+    $("#mountainDewCheck").prop("disabled", true);
+    $("#mountainDewCheck").prop("checked", true);
+    var temp = window.name.slice(11);
+    if(!orderSummary.includes("Mountain Dew")){
+      orderSummary.push("Mountain Dew");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+  }
+  if(window.name.includes("Crush")){
+    $("#crushCheck").prop("disabled", true);
+    $("#crushCheck").prop("checked", true);
+    var temp = window.name.slice(5);
+    if(!orderSummary.includes("Crush")){
+      orderSummary.push("Crush");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
+  }
+  if(window.name.includes("Brisk")){
+    $("#briskCheck").prop("disabled", true);
+    $("#briskCheck").prop("checked", true);
+    var temp = window.name.slice(5);
+    if(!orderSummary.includes("Brisk")){
+      orderSummary.push("Brisk");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
+  }
+  if(window.name.includes("Lemonade")){
+    $("#lemonadeCheck").prop("disabled", true);
+    $("#lemonadeCheck").prop("checked", true);
+    var temp = window.name.slice(8);
+    if(!orderSummary.includes("Lemonade")){
+      orderSummary.push("Lemonade");
+      orderSummary.push("<br \>");
+      orderPrices.push("$" + temp);
+      orderPrices.push("<br \>");
+    }
+    window.name = "";
+
   }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);
@@ -391,6 +513,49 @@ function customPizzaFunction(){
     window.name = "";
   }
   fromPizza = true;
+}
+
+function calcTotalSum(){
+  var total = 0;
+  for(var i = 0; i < orderPrices.length; i++){
+    if((i % 2) == 0) {
+      total += Number(orderPrices[i].replace("$", "")); //get rid of $
+    }
+  }
+  if(xmasCoupon == true){
+    if((total / 4) < 10)
+      total = (total / 4).toPrecision(3);
+    else if((total / 4) > 10)
+      total = (total / 4).toPrecision(4);
+  }
+  if(thanksgivingCoupon && (orderSummary.includes("Buffalo Wings") || orderSummary.includes("Hot Wings") || orderSummary.includes("Lemon Pepper Wings")))
+    total -= 3;
+  $("#totalCost").html("$" + total.toString());
+}
+
+function couponClick() {
+  if(hasCoupon) {
+    window.alert("You already have a coupon! Limit 1 coupon per order.");
+  }
+  else if(inputCoupon.value == "THNKSGVN2017") {
+    hasCoupon = true;
+    thanksgivingCoupon = true;
+    window.alert("Congratulations! You have a 3 dollars off on wings!");
+    calcTotalSum();
+  }
+  else if(inputCoupon.value == "XMAS2017") {
+    hasCoupon = true;
+    xmasCoupon = true;
+    window.alert("Congratulations! You have 25% off at checkout!");
+    calcTotalSum();
+  }
+  else if(inputCoupon.value == "VETERAN2017") {
+    window.alert("Sorry! This coupon has expired.");
+  }
+  else {
+    window.alert("Invalid Promo Code.");
+  }
+  calcTotalSum();
 }
 
 $(document).ready(function() {
@@ -421,15 +586,6 @@ $(document).ready(function() {
   // --------------------------------------------------------------------------
   // Javascript for checkout page
   //---------------------------------------------------------------------------
-  function calcTotalSum(){
-    var total = 0;
-    for(var i = 0; i < orderPrices.length; i++){
-      if((i % 2) == 0)
-        total += Number(orderPrices[i].replace("$", "")); //get rid of $
-    }
-    $("#totalCost").html("$" + total.toString());
-    //console.log(total);
-  }
 
   // THERE IS PROBABLY A BETTER WAY OF DOING THIS
   // update summary box

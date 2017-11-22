@@ -329,9 +329,9 @@ function storeCustomPizza() {
 function storeTraditional(){
   var size = $('#size-trad-wings option:selected').val();
   var flavor = $('#type-trad-wings option:selected').val();
+  var total = prices["Buffalo Wings"] + Number(size) + 1;
 
-  window.name = "Traditonal" + size + flavor;
-  window.alert(window.name);
+  window.name = "Traditional" + flavor + total.toString();
 }
 
 function customPizzaFunction(){
@@ -372,8 +372,24 @@ function customPizzaFunction(){
     window.name = "";
   }
   if(window.name.includes("Traditional")){
-    $("#supremePizzaCheck").prop("disabled", true);
-    $("#supremePizzaCheck").prop("checked", true);
+    var temp = window.name.slice(11,12);
+    if(temp == "B"){
+      $("#buffaloWingCheck").prop("disabled", true);
+      $("#buffaloWingCheck").prop("checked", true);
+      if(!orderSummary.includes("Buffalo Wings")){
+        orderSummary.push("Buffalo Wings");
+        orderSummary.push("<br \>");
+        orderPrices.push("$" + window.name.slice(12));
+        orderPrices.push("<br \>");
+      }
+    } else if(temp == "L"){
+      $("#lemonWingCheck").prop("disabled", true);
+      $("#lemonWingCheck").prop("checked", true);
+    } else if(temp == "H"){
+      $("#hotWingCheck").prop("disabled", true);
+      $("#hotWingCheck").prop("checked", true);
+    }
+    window.name = "";
   }
   if(window.name != ""){
     $("#customPizzaCheck").prop("checked", true);

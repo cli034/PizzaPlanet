@@ -52,7 +52,7 @@ var orderSummary = [];
 var orderPrices = [];
 var fromPizza = false;
 
-function addItemToMenu() {
+function addItemToMenu(){
   var user = firebase.auth().currentUser;
   var database = firebase.database();
   var customerRef = database.ref('Customers');
@@ -292,6 +292,7 @@ function updateAddress() {
         window.alert("Address update failed");
     });
   }
+}
 
 function choosePepperoni(){
   // get cost of pizza

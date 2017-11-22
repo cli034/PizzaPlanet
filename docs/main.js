@@ -114,7 +114,9 @@ function addItemToMenu(){
           var updates = {};
           updates['Customers/' + key + '/order/'] = postData;
 
-          return firebase.database().ref().update(updates);
+
+          firebase.database().ref().update(updates);
+          location.href = "thankyou.html";
         }
       }
     });

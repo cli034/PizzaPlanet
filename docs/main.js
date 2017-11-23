@@ -556,10 +556,10 @@ function calcTotalSum(){
     }
   }
   if(xmasCoupon == true){
-    if((total / 4) < 10)
-      total = (total / 4).toPrecision(3);
-    else if((total / 4) > 10)
-      total = (total / 4).toPrecision(4);
+    if(((3*total) / 4) < 10)
+      total = ((3*total) / 4).toPrecision(3);
+    else if(((3*total) / 4) > 10)
+      total = ((3*total) / 4).toPrecision(4);
   }
   if(thanksgivingCoupon && (orderSummary.includes("Buffalo Wings") || orderSummary.includes("Hot Wings") || orderSummary.includes("Lemon Pepper Wings")))
     total -= 3;

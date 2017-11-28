@@ -73,9 +73,11 @@ function displayRecent() {
           $("#recentOrderButton").prop("hidden", true);
           if(orderArr.length == 0)
             $("#recentOrderText").html("No Recent Orders");
-          else
+          else{
             $("#recentOrderText").html("Recent Order:");
             $("#recentOrderText").html(orderArr);
+            $("#reorderBtn").prop("hidden", false);
+          }
         }
       }
     });
@@ -89,6 +91,42 @@ function displayRecent() {
 function getEmail() {
   var user = firebase.auth().currentUser;
   $("#currEmail").text(user.email);
+}
+
+function placeRecentOrder() {
+  var user = firebase.auth().currentUser;
+  var database = firebase.database();
+  var customerRef = database.ref('Customers');
+  if (user != null) {
+    customerRef.once('value').then(function(snapshot) {
+      for (var key in snapshot.val()){
+        var userInfo = snapshot.child(key).val();
+
+        var currEmail = String(userInfo.email);
+        var validEmail = currEmail.toLowerCase();
+
+        if (validEmail == user.email) {
+
+          var postData = [];
+
+          for (var i = 0; i < orderArr.length; i = i + 2) {
+            postData.push(orderArr[i]);
+          }
+
+          var updates = {};
+          updates['Customers/' + key + '/order/'] = postData;
+          console.log(postData);
+          console.log(updates);
+
+          firebase.database().ref().update(updates);
+          location.href = "thankyou.html";
+        }
+      }
+    });
+  } else{
+    window.alert("Please login, or sign up.")
+    $("#loginModal").modal("toggle");
+  }
 }
 
 function addItemToMenu(){

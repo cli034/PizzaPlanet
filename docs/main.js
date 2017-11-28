@@ -270,15 +270,16 @@ function deleteAccount() {
 
         if (uEmail == user.email)
         {
-          customerRef.child(key).remove();
+          customerRef.child(key).remove(); //delete from database
+          //delete actual account
+          user.delete().then(function() { 
+            window.alert("Account deleted");
+            location.href = "index.html";
+          }).catch(function(error) {
+            window.alert("Delete Error: Try again");
+          });
         }
       }
-      user.delete().then(function() {
-        window.alert("Account deleted");
-        location.href = "index.html";
-      }).catch(function(error) {
-        window.alert("Delete Error: Try again");
-      });
     });
   }
 }
